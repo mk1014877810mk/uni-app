@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "tmp-one": "/pages/components/tmpOne"
+  }
+}

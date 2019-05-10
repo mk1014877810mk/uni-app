@@ -1,0 +1,17 @@
+
+swiper-item {
+	position: relative;
+}
+swiper ._img {
+	width: 750rpx;
+	height: 100%;
+}
+.swiper-title {
+	position: absolute;
+	top: 10rpx;
+	left: 10rpx;
+	font-size: 25rpx;
+	padding: 6rpx 16rpx;
+	color: rgb(8, 6, 26);
+}
+
