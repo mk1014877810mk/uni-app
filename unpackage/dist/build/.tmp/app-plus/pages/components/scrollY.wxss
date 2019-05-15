@@ -1,0 +1,108 @@
+
+.list.data-v-26bba594 {
+	position: fixed;
+	bottom: -60vh;
+	left: 50rpx;
+	z-index: 1;
+	width: 650rpx;
+	background-color: #fff;
+	border-radius: 10rpx;
+	-webkit-box-shadow: 0 0 4rpx 4rpx #ddd;
+	        box-shadow: 0 0 4rpx 4rpx #ddd;
+	-webkit-transition: bottom 0.3s linear;
+	-o-transition: bottom 0.3s linear;
+	transition: bottom 0.3s linear;
+}
+.list .list-top.data-v-26bba594 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	height: 100rpx;
+	border-bottom: 1rpx solid #ddd;
+	font-size: 30rpx;
+	padding: 20rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	margin-bottom: 10rpx;
+}
+.list .list-top .hall-img.data-v-26bba594 {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	    -ms-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
+	width: 140rpx;
+	height: 140rpx;
+	padding: 10rpx;
+	border-radius: 50%;
+	overflow: hidden;
+	background-color: #fff;
+	-webkit-box-shadow: 0 0 4rpx 6rpx #ddd;
+	        box-shadow: 0 0 4rpx 6rpx #ddd;
+}
+.list .list-top .close.data-v-26bba594 {
+	width: 40rpx;
+	height: 40rpx;
+}
+.list .list-top .hall-img image.data-v-26bba594 {
+	width: 140rpx;
+	height: 140rpx;
+	border-radius: 50%;
+}
+.list scroll-view.data-v-26bba594 {
+	padding: 0 20rpx;
+}
+.list .list-detail.data-v-26bba594 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: left;
+	-webkit-justify-content: left;
+	    -ms-flex-pack: left;
+	        justify-content: left;
+	width: calc(100% - 40rpx);
+	height: 130rpx;
+	padding: 20rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	border-bottom: 1rpx solid #ddd;
+}
+.list .list-detail .detail-right.data-v-26bba594 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	margin-left: 20rpx;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	font-size: 32rpx;
+}
+.list .no-data.data-v-26bba594 {
+	text-align: center;
+	font-size: 30rpx;
+	line-height: 100rpx;
+	color: #999;
+}
+.show.data-v-26bba594 {
+	bottom: 150rpx !important;
+}
+.active.data-v-26bba594 {
+	background-color: #efefef;
+}
+

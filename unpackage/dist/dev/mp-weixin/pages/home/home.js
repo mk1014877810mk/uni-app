@@ -162,6 +162,7 @@
           _this3.template = 1 * res.data.template || 1;
           _this3.title = res.data.hall_name;
           _this3.logoSrc = _this3.$store.state.ajaxUrl + res.data.hall_logo;
+          _this3.$common.setNavTitle(_this3.title);
           callback && callback();
         }
       }).catch(function (err) {
@@ -235,8 +236,6 @@
             callback && callback(z_idList); // 获取所有展项
           } else {// 模板4、5、6
             _this5.tab.hallList = exList;
-
-            // that.setAnotherHeight(); 
           }
 
           _this5.$store.commit('setLastHallZid', res.data[0].z_id);
@@ -287,18 +286,18 @@
 
     goList: function goList(params) {
       uni.navigateTo({
-        url: '../list/list?z_id=' + params.z_id });
+        url: '../list/list?z_id=' + params.z_id + '&title=' + this.title });
 
     },
 
     goDetail: function goDetail(params) {
       if (params.e_id) {// 展馆
         uni.navigateTo({
-          url: '../detail/detail?e_id=' + params.e_id });
+          url: '../detail/detail?e_id=' + params.e_id + '&title=' + this.title });
 
       } else {// 展厅或展项
         uni.navigateTo({
-          url: '../detail/detail?z_id=' + params.z_id });
+          url: '../detail/detail?z_id=' + params.z_id + '&title=' + this.title });
 
       }
     },

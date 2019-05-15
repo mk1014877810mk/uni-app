@@ -1,41 +1,41 @@
 <template>
-	<div class='box'>
-		<div class='top'>
+	<view class='box'>
+		<view class='top'>
 			<my-swiper :imgUrls='swiper.imgUrls' @goOtherPage='goHome'></my-swiper>
-		</div>
-		<div class='first-template' v-if='template.first' v-for='(item,index) in exhibition.firstData' :key='index'>
-			<div class='first-title'>
+		</view>
+		<view class='first-template' v-if='template.first' v-for='(item,index) in exhibition.firstData' :key='index'>
+			<view class='first-title'>
 				{{item.hall_name}}
-			</div>
-			<div class='first-content' @tap='goHome(item.e_id)'>
-				<img :src='item.hall_cover'>
-			</div>
-		</div>
-		<div class='second-template' v-if='template.second'>
-			<div class='second-title '>
+			</view>
+			<view class='first-content' @tap='goHome(item.e_id)'>
+				<image mode='aspectFill' :src='item.hall_cover'></image>
+			</view>
+		</view>
+		<view class='second-template' v-if='template.second'>
+			<view class='second-title'>
 				推荐精品博物馆
-			</div>
-			<div class='second-content'>
-				<div class='second-list' v-for='(item,index) in exhibition.secondData' :key='index' @tap='goHome(item.e_id)'>
-					<img :src='item.hall_cover'>
-					<div class='detail-title one-txt-cut'>{{item.hall_name}}</div>
-				</div>
-			</div>
-		</div>
+			</view>
+			<view class='second-content'>
+				<view class='second-list' v-for='(item,index) in exhibition.secondData' :key='index' @tap='goHome(item.e_id)'>
+					<image mode='aspectFill' :src='item.hall_cover'></image>
+					<view class='detail-title one-txt-cut'>{{item.hall_name}}</view>
+				</view>
+			</view>
+		</view>
 
-		<div class='third-template' v-if='template.third'>
-			<div class='third-list' v-for='(item,index) in exhibition.thirdData' :key='index' @tap='goHome(item.e_id)'>
-				<div class='third-left'>
-					<img mode='aspectFill' :src='item.hall_cover'> 
-				</div>
-				<div class='third-right'>
-					<div class='third-title one-txt-cut'>{{item.hall_name}}</div>
-					<div class='third-des txt-cut2'>{{item.hall_summary}}</div>
-				</div>
-			</div>
-		</div>
-		<div class='tips' v-if='exhibition.firstData.length==0||exhibition.thirdData.length>4'>{{exhibition.firstData.length!=0?loadText:'暂无数据'}}</div>
-	</div>
+		<view class='third-template' v-if='template.third'>
+			<view class='third-list' v-for='(item,index) in exhibition.thirdData' :key='index' @tap='goHome(item.e_id)'>
+				<view class='third-left'>
+					<image mode='aspectFill' :src='item.hall_cover'></image>
+				</view>
+				<view class='third-right'>
+					<view class='third-title one-txt-cut'>{{item.hall_name}}</view>
+					<view class='third-des txt-cut2'>{{item.hall_summary}}</view>
+				</view>
+			</view>
+		</view>
+		<view class='tips' v-if='exhibition.firstData.length==0||exhibition.thirdData.length>4'>{{exhibition.firstData.length!=0?loadText:'暂无数据'}}</view>
+	</view>
 </template>
 
 <script>
@@ -154,7 +154,7 @@
 		box-sizing: border-box;
 	}
 
-	.box .first-template .first-content img {
+	.box .first-template .first-content image {
 		width: 100%;
 		height: 330upx
 	}
@@ -189,7 +189,7 @@
 		padding: 10upx 0;
 	}
 
-	.box .second-template .second-content img {
+	.box .second-template .second-content image {
 		width: 100%;
 		height: 200upx;
 	}
@@ -230,7 +230,7 @@
 		word-break: break-all;
 	}
 
-	.box .third-template .third-left img {
+	.box .third-template .third-left image {
 		width: 200upx;
 		height: 130upx;
 	}

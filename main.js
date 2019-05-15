@@ -1,19 +1,19 @@
 import Vue from 'vue'
 import App from './App'
 
-import common from './until/common'
-import api from './until/api'
-import store from './store'
+import Common from './until/common'
+import Api from './until/api'
+import Store from './store'
 
-Vue.prototype.$store = store
-Vue.prototype.$common = common
-Vue.prototype.$api = api
+Vue.prototype.$store = Store
+Vue.prototype.$common = Common
+Vue.prototype.$api = Api
 
 Vue.config.productionTip = false
 
 App.mpType = 'app'
 
 const app = new Vue({
-    ...App
+	...App
 })
 app.$mount()

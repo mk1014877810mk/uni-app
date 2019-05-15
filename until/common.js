@@ -11,9 +11,13 @@ const showTips = (title, icon = 'none', complete) =>
 
 const showLoading = () => uni.showLoading();
 const hideLoading = () => uni.hideLoading();
+const setNavTitle = title => uni.setNavigationBarTitle({
+	title
+});
 
 export default {
 	showTips,
 	showLoading,
-	hideLoading
+	hideLoading,
+	setNavTitle
 }

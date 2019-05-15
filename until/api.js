@@ -8,4 +8,7 @@ export default {
 	getSwiper456: data => request('applets/hall-banner', 'get', data),
 	getExhibition: data => request('applets/hall', 'get', data),
 	getInteractive: data => request('applets/items', 'get', data),
+	
+	// map
+	getMap: data => request('applets/map', 'get', data),
 }

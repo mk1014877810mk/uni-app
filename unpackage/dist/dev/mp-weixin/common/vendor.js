@@ -395,7 +395,7 @@ function getData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -6492,7 +6492,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$mp[vm.mpType];
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -6513,14 +6513,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$mp[vm.mpType];
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$mp[vm.mpType];
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -6589,7 +6589,7 @@ var patch = function(oldVnode, vnode) {
         });
         var diffData = diff(data, mpData);
         if (Object.keys(diffData).length) {
-            if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+            if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
                 console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
                     ']差量更新',
                     JSON.stringify(diffData));
@@ -8029,7 +8029,7 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages.json");
+/* WEBPACK VAR INJECTION */(function(uni, createApp) {__webpack_require__(/*! uni-pages */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages.json");
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "D:\\Kun Meng\\HBuilderProjects\\tour\\App.vue"));
 
@@ -8043,13 +8043,19 @@ _vue.default.prototype.$api = _api.default;
 
 _vue.default.config.productionTip = false;
 
+uni.onNetworkStatusChange(function (res) {
+  console.log(res);
+  var title = !res.isConnected ? '网络已断开' : '网络已连接';
+  _common.default.showTips(title);
+});
+
 _App.default.mpType = 'app';
 
 var app = new _vue.default(_objectSpread({},
 _App.default));
 
 createApp(app).$mount();
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createApp"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createApp"]))
 
 /***/ }),
 
@@ -8121,6 +8127,40 @@ createPage(_list.default);
 
 /***/ }),
 
+/***/ "D:\\Kun Meng\\HBuilderProjects\\tour\\main.js?{\"page\":\"pages%2Fmap%2Fmap\"}":
+/*!******************************************************************************!*\
+  !*** D:/Kun Meng/HBuilderProjects/tour/main.js?{"page":"pages%2Fmap%2Fmap"} ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _map = _interopRequireDefault(__webpack_require__(/*! ./pages/map/map.vue */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages\\map\\map.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_map.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "D:\\Kun Meng\\HBuilderProjects\\tour\\main.js?{\"page\":\"pages%2Fscan%2Fscan\"}":
+/*!********************************************************************************!*\
+  !*** D:/Kun Meng/HBuilderProjects/tour/main.js?{"page":"pages%2Fscan%2Fscan"} ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _scan = _interopRequireDefault(__webpack_require__(/*! ./pages/scan/scan.vue */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages\\scan\\scan.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_scan.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
 /***/ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages.json":
 /*!****************************************************!*\
   !*** D:/Kun Meng/HBuilderProjects/tour/pages.json ***!
@@ -8182,7 +8222,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   getSwiper123: function getSwiper123(data) {return (0, _request.default)('applets/item-banner', 'get', data);},
   getSwiper456: function getSwiper456(data) {return (0, _request.default)('applets/hall-banner', 'get', data);},
   getExhibition: function getExhibition(data) {return (0, _request.default)('applets/hall', 'get', data);},
-  getInteractive: function getInteractive(data) {return (0, _request.default)('applets/items', 'get', data);} };exports.default = _default;
+  getInteractive: function getInteractive(data) {return (0, _request.default)('applets/items', 'get', data);},
+
+  // map
+  getMap: function getMap(data) {return (0, _request.default)('applets/map', 'get', data);} };exports.default = _default;
 
 /***/ }),
 
@@ -8206,12 +8249,16 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 var showLoading = function showLoading() {return uni.showLoading();};
-var hideLoading = function hideLoading() {return uni.hideLoading();};var _default =
+var hideLoading = function hideLoading() {return uni.hideLoading();};
+var setNavTitle = function setNavTitle(title) {return uni.setNavigationBarTitle({
+    title: title });};var _default =
+
 
 {
   showTips: showTips,
   showLoading: showLoading,
-  hideLoading: hideLoading };exports.default = _default;
+  hideLoading: hideLoading,
+  setNavTitle: setNavTitle };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),

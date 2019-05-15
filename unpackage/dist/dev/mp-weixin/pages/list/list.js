@@ -19,6 +19,7 @@
 {
   data: function data() {
     return {
+      title: '',
       z_id: '',
       template: 1,
       page: 1,
@@ -30,7 +31,9 @@
 
   onLoad: function onLoad(options) {
     this.z_id = options.z_id;
+    this.title = options.title;
     this.$common.showLoading();
+    this.$common.setNavTitle(this.title);
     this.getInteractive(this.z_id, '', this.page);
   },
 
@@ -64,7 +67,7 @@
 
     goDetail: function goDetail(params) {
       uni.navigateTo({
-        url: '../detail/detail?z_id=' + params.z_id });
+        url: '../detail/detail?z_id=' + params.z_id + '&title=' + this.title });
 
     } },
 

@@ -1,0 +1,29 @@
+
+.box-content.data-v-28c97d08 {
+	text-align: center;
+}
+.box-content .box-top.data-v-28c97d08 {
+	padding: 70rpx;
+	background-color: #ccc;
+}
+.box-content .box-top image.data-v-28c97d08 {
+	display: block;
+	width: 610rpx;
+	height: 610rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	border: 20rpx solid #fff;
+}
+.box-content .box-tips.data-v-28c97d08 {
+	padding: 4vh 0;
+	font-size: 36rpx;
+}
+.box-content .box-btn.data-v-28c97d08 {
+	display: inline-block;
+	padding: 15rpx 30rpx;
+	background-color: #09f;
+	border-radius: 20rpx;
+	margin-top: 2vh;
+	color: #fff;
+}
+

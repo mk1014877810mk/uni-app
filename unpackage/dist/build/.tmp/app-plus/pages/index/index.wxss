@@ -1,0 +1,222 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 模板1、模板2、模板3公共部分 */
+.box .first-template.data-v-3c694b5d,
+.box .second-template.data-v-3c694b5d,
+.box .third-template.data-v-3c694b5d {
+	margin-top: 20rpx;
+	padding: 0 35rpx;
+	background-color: #fff;
+}
+.box .first-template .first-title.data-v-3c694b5d,
+.box .second-template .second-title.data-v-3c694b5d {
+	position: relative;
+	padding: 20rpx 0;
+	font-size: 30rpx;
+	margin-left: 20rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.box .first-template .first-content image.data-v-3c694b5d {
+	width: 100%;
+	height: 330rpx
+}
+.box .first-template .first-title.data-v-3c694b5d:before,
+.box .second-template .second-title.data-v-3c694b5d:before {
+	content: '';
+	position: absolute;
+	left: -20rpx;
+	top: 22rpx;
+	width: 8rpx;
+	height: calc(100% - 40rpx);
+	background-color: #000;
+}
+/* 模板2内容 */
+.box .second-template .second-content .second-list.data-v-3c694b5d {
+	display: inline-block;
+	width: 330rpx;
+	vertical-align: middle;
+	padding-bottom: 20rpx;
+	text-align: center;
+}
+.box .second-template .second-content .second-list.data-v-3c694b5d:nth-child(2n) {
+	margin-left: 22rpx;
+}
+.box .second-template .second-content .second-list .detail-title.data-v-3c694b5d {
+	font-size: 30rpx;
+	padding: 10rpx 0;
+}
+.box .second-template .second-content image.data-v-3c694b5d {
+	width: 100%;
+	height: 200rpx;
+}
+/* 模板3 */
+.box .third-template.data-v-3c694b5d {
+	padding-bottom: 35rpx;
+}
+.box .third-template .third-list.data-v-3c694b5d {
+	width: 100%;
+	padding: 35rpx 0 0;
+}
+.box .third-template .third-list .third-left.data-v-3c694b5d {
+	display: inline-block;
+	vertical-align: middle;
+}
+.box .third-template .third-list .third-right.data-v-3c694b5d {
+	display: inline-block;
+	vertical-align: top;
+	width: 445rpx;
+	margin-left: 35rpx;
+}
+.box .third-template .third-list .third-right .third-title.data-v-3c694b5d {
+	font-size: 32rpx;
+	font-weight: 600;
+	margin-bottom: 12rpx;
+	word-break: break-all;
+}
+.box .third-template .third-list .third-right .third-des.data-v-3c694b5d {
+	font-size: 28rpx;
+	color: #666;
+	word-break: break-all;
+}
+.box .third-template .third-left image.data-v-3c694b5d {
+	width: 200rpx;
+	height: 130rpx;
+}
+

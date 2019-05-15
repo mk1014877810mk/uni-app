@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/home/home",
     "pages/detail/detail",
-    "pages/list/list"
+    "pages/list/list",
+    "pages/scan/scan",
+    "pages/map/map"
   ],
   "subPackages": [],
   "window": {

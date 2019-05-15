@@ -54,21 +54,18 @@ var icon = [{
       if (this.index == currentIndex) return;
       switch (currentIndex) {
         case 1:
-          console.log(1);
           uni.redirectTo({
-            url: '' });
+            url: '../home/home?e_id=' + this.e_id + '&title=' + this.title });
 
           break;
         case 2:
-          console.log(2);
           uni.redirectTo({
-            url: '' });
+            url: '../scan/scan?e_id=' + this.e_id + '&title=' + this.title });
 
           break;
         case 3:
-          console.log(3);
           uni.redirectTo({
-            url: '' });
+            url: '../map/map?e_id=' + this.e_id + '&title=' + this.title });
 
           break;}
 
@@ -87,7 +84,7 @@ var icon = [{
         break;}
 
   },
-  props: ['index'] };exports.default = _default;
+  props: ['index', 'e_id', 'title'] };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),

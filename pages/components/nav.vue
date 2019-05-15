@@ -2,14 +2,14 @@
 	<view class='template-nav flex'>
 		<view @tap='navJump' data-index='1'>
 			<image class="icon1" mode='scaleToFill' :src='iconSrc.first'></image>
-			<view class='text'>展项</view>
+			<view class='text' :class="{'active': index==1}">展项</view>
 		</view>
 		<view @tap='navJump' data-index='2'>
 			<image class="icon2" :src='iconSrc.second'></image>
 		</view>
 		<view @tap='navJump' data-index='3'>
 			<image class="icon3" :src='iconSrc.third'></image>
-			<view class='text'>地图</view>
+			<view class='text' :class="{'active': index==3}">地图</view>
 		</view>
 	</view>
 </template>
@@ -44,21 +44,18 @@
 				if (this.index == currentIndex) return;
 				switch (currentIndex) {
 					case 1:
-						console.log(1);
 						uni.redirectTo({
-							url: ''
+							url: '../home/home?e_id='+this.e_id+'&title='+this.title
 						});
 						break;
 					case 2:
-						console.log(2);
 						uni.redirectTo({
-							url: ''
+							url: '../scan/scan?e_id='+this.e_id+'&title='+this.title
 						});
 						break;
 					case 3:
-						console.log(3);
 						uni.redirectTo({
-							url: ''
+							url: '../map/map?e_id='+this.e_id+'&title='+this.title
 						});
 						break;
 				}
@@ -77,7 +74,7 @@
 					break;
 			}
 		},
-		props: ['index']
+		props: ['index','e_id','title']
 	}
 </script>
 
@@ -122,5 +119,9 @@
 
 	.template-nav>view:nth-child(2) image {
 		margin-top: 12rpx;
+	}
+	
+	.active{
+		color: #09f;
 	}
 </style>

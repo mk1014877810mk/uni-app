@@ -35,4 +35,7 @@
 .template-nav>view:nth-child(2) image.data-v-2c8b947e {
 	margin-top: 12rpx;
 }
+.active.data-v-2c8b947e{
+	color: #09f;
+}
 
