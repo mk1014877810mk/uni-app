@@ -67,11 +67,10 @@ var _default =
       this.imgTab();
       this.$parent.z_id ? this.$parent.z_id = z_id : this.$parent.$parent.z_id = z_id;
       this.$parent.showPointer ? this.$parent.showPointer = false : this.$parent.$parent.showPointer = false;
-      this.$parent.map ? this.$parent.map.initScale = 1 : this.$parent.$parent.map.initScale = 1;
       this.$parent.img ? this.$parent.img.src = '' : this.$parent.$parent.img.src = '';
       this.$parent.pointer ? this.$parent.pointer.position = [] : this.$parent.$parent.pointer.position = [];
       'showList' in this.$parent ? this.$parent.showList = false : this.$parent.$parent.showList = false;
-      this.$common.showTips('地图切换中...');
+      this.$common.showLoading();
       var getMap = this.$parent.getMap ? this.$parent.getMap : this.$parent.$parent.getMap;
       getMap(z_id);
     } },

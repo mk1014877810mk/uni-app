@@ -10,7 +10,7 @@
   "subPackages": [],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "tour",
+    "navigationBarTitleText": "",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
@@ -18,7 +18,7 @@
     "alwaysShowBeforeRender": true,
     "autoclose": false
   },
-  "appname": "tourtest",
+  "appname": "tour",
   "compilerVersion": "1.9.4",
   "usingComponents": {}
 }

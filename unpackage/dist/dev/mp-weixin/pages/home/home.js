@@ -280,7 +280,6 @@
       var obj = {
         length: this.tab.contents[index].length };
 
-      console.log(this.tab.contents[index], obj.length);
       this.setHeight(obj);
     },
 

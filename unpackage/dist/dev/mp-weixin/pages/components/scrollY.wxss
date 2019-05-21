@@ -62,6 +62,10 @@
 .list scroll-view.data-v-3170204a {
 	padding: 0 20rpx;
 }
+.data-v-3170204a::-webkit-scrollbar {
+	width: 0rpx;
+	height: 0rpx;
+}
 .list .list-detail.data-v-3170204a {
 	display: -webkit-box;
 	display: -webkit-flex;

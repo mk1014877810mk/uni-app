@@ -23,11 +23,13 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
 var _default =
 {
   data: function data() {
-    return {};
-
+    return {
+      showTips: false };
 
   },
   methods: {
@@ -35,6 +37,11 @@ var _default =
       this.template < 4 ? this.$emit('goDetail', { e_id: e_id, z_id: z_id }) : this.$emit('goList', { z_id: z_id });
     } },
 
+  mounted: function mounted() {var _this = this;
+    setTimeout(function () {
+      _this.showTips = true;
+    }, 1000);
+  },
   props: ['swiperItemList', 'swiperText', 'template'] };exports.default = _default;
 
 /***/ }),

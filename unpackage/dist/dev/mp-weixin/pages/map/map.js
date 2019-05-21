@@ -62,10 +62,12 @@
 
 
 
+
 var pointerW = 23; // 当前地图点图标宽度
 var pointerH = 23; // 当前地图点图标高度
 var bmsW = 20; // 后台地图点图标宽度
 var bmsH = 20; // 后台地图点图标高度
+var distance = 50; // padding的大小为50px
 var _default = {
   data: function data() {
     return {
@@ -144,7 +146,7 @@ var _default = {
             }, 300);
             return;
           }
-          res.data.items_position.forEach(function (el, index) {
+          res.data.items_position.forEach(function (el) {
             el.showPic = false;
           });
           _this3.img.src = _this3.$store.state.ajaxUrl + res.data.hall_map;
@@ -160,7 +162,7 @@ var _default = {
       var width = e.detail.width,
       height = e.detail.height,
       tempX = this.windowWidth / width,
-      tempY = this.windowHeight / height;
+      tempY = (this.windowHeight - 100) / height;
 
       this.img.scale = tempX <= tempY ? tempY : tempX;
 
@@ -177,7 +179,7 @@ var _default = {
         2.4);
         el.y = uni.upx2px((el.hall_position.split(',')[1] * 1 + bmsH / 2) / _this4.scale * _this4.img.scale - pointerH /
         1.4);
-        el.top = el.y > uni.upx2px(140);
+        el.top = true; // el.y > uni.upx2px(140);
         el.index = index;
         el.hall_cover = _this4.$store.state.ajaxUrl + el.hall_cover;
       });
@@ -243,26 +245,26 @@ var _default = {
             var position = [];
             _this6.originPointer[key].forEach(function (el, index) {
               if (typeof el == 'object') {
-                var _obj = {};
+                var obj = {};
                 for (var k in el) {
                   if (k == 'x') {
-                    _obj[k] = el[k] + (scale - 1) * pointerW / 8;
+                    obj[k] = el[k] + (scale - 1) * pointerW / 8;
                   } else if (k == 'y') {
-                    _obj[k] = el[k] + (scale - 1) * pointerH / 6;
+                    obj[k] = el[k] + (scale - 1) * pointerH / 6;
                   } else {
-                    _obj[k] = el[k];
+                    obj[k] = el[k];
                   }
                 }
+                position.push(obj);
               }
-              position.push(obj);
             });
             pointer[key] = position;})();
         } else {
           pointer[key] = this.originPointer[key];
         }
       }
-      pointer.width /= scale;
-      pointer.height /= scale;
+      pointer.width = pointerW / scale;
+      pointer.height = pointerH / scale;
 
       this.map.scale = scale;
       this.pointer = pointer;

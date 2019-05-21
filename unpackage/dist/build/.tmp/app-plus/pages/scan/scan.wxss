@@ -1,12 +1,12 @@
 
-.box-content.data-v-8cbf964e {
+.box-content.data-v-2624e907 {
 	text-align: center;
 }
-.box-content .box-top.data-v-8cbf964e {
+.box-content .box-top.data-v-2624e907 {
 	padding: 70rpx;
 	background-color: #ccc;
 }
-.box-content .box-top image.data-v-8cbf964e {
+.box-content .box-top image.data-v-2624e907 {
 	display: block;
 	width: 610rpx;
 	height: 610rpx;
@@ -14,11 +14,11 @@
 	        box-sizing: border-box;
 	border: 20rpx solid #fff;
 }
-.box-content .box-tips.data-v-8cbf964e {
+.box-content .box-tips.data-v-2624e907 {
 	padding: 4vh 0;
 	font-size: 36rpx;
 }
-.box-content .box-btn.data-v-8cbf964e {
+.box-content .box-btn.data-v-2624e907 {
 	display: inline-block;
 	padding: 15rpx 30rpx;
 	background-color: #09f;

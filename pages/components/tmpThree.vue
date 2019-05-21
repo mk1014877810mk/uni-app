@@ -9,7 +9,9 @@
 				<view class='template3-bottom-des txt-cut2'>{{item.hall_summary}}</view>
 			</view>
 		</view>
-		<view class='tips'  v-if='swiperItemList.length>9||swiperItemList.length==0'>{{swiperText}}</view>
+		<block v-if="showTips">
+			<view class='tips'  v-if='swiperItemList.length>9||swiperItemList.length==0'>{{swiperText}}</view>
+		</block>
 	</view>
 </template>
 
@@ -17,13 +19,18 @@
 	export default {
 		data() {
 			return {
-
-			};
+				showTips: false
+			}
 		},
 		methods:{
 			goAnother(e_id, z_id){
 				this.template < 4 ? this.$emit('goDetail',{e_id, z_id}) : this.$emit('goList',{z_id});
 			}
+		},
+		mounted() {
+			setTimeout(()=>{
+				this.showTips = true;
+			},1000);
 		},
 		props: ['swiperItemList', 'swiperText','template']
 	}

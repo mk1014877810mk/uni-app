@@ -14,29 +14,30 @@
 		<!-- #endif -->
 
 		<movable-area class='map' :style='{height:map.height+"px"}'>
-			<movable-view :x='img.x' :y='img.y' :style='{width:img.width+"px",height:img.height+"px",position:"relative"}'
+			<movable-view :x='img.x' :y='img.y' :style='{width:(img.width+40)+"px",height:(img.height+100)+"px",padding:"50px 20px",boxSizing:"border-box"}'
 			 animation='false' direction="all" scale='true' :scale-value='map.initScale' scale-min='1' scale-max='2' inertia='true'
 			 @scale='bindscale'>
+				<div class="content" :style='{width:(img.width)+"px",height:(img.height)+"px",position:"relative"}'>
+					<image :src='img.src' @load='imgLoad' @tap='imgTab' style="width:100%;height:100%;"></image>
 
-				<image :src='img.src' @load='imgLoad' :style='{width:img.width+"px",height:img.height+"px"}' @tap='imgTab'></image>
+					<view class='pointer' v-if='showPointer' :data-index='index' v-for='(item,index) in pointer.position' :key='index'
+					 :style='{width:pointer.width+"px",height:pointer.height+"px",position:"absolute",zIndex:item.index==currentIndex?3:2,left:item.x+"px",top:item.y+"px",color:"#fff"}'>
 
-				<view class='pointer' v-if='showPointer' :data-index='index' v-for='(item,index) in pointer.position' :key='index'
-				 :style='{width:pointer.width+"px",height:pointer.height+"px",position:"absolute",zIndex:item.index==currentIndex?3:2,left:item.x+"px",top:item.y+"px",color:"#fff"}'>
-
-					<!-- 展项坐标 -->
-					<image src='../../static/position.png' mode='scaleToFill' @tap='showPic(index)' style='width:100%;height:100%;'></image>
-					<!-- 展项名称 -->
-					<view :style='{fontSize:(12/map.scale)+"px",whiteSpace:"nowrap",position:"absolute",top:(pointer.height*1+map.scale*10)+"px",left:"50%" ,transform:"translateX(-50%)",background:"rgba(0,0,0,.5)",color:"#fff",paddingLeft:10/map.scale+"px",paddingRight:10/map.scale+"px",borderRadius:10/map.scale+"px"}'>{{item.hall_name}}</view>
-					<!-- 展项图片 -->
-					<view class='show-pic' v-if='item.showPic' @tap='goListDetail(item.z_id)' :flag='item.top' ref='pic' :style='{"bottom":(pointer.height*map.scale*0.85)+"px",transform:item.top?"translateX(-50%)":"translateX(-50%) rotate(180deg)"}'>
-						<image mode='scaleToFill' src='../../static/bgc.png' style='width:100%;height:100%;'></image>
-						<view style='width:84%;height:76%;position:absolute;left:50%;top:6%;transform:translateX(-50%);z-index:3;border-radius:50%;overflow:hidden;text-align:center;'>
-							<image mode='center' :style='{width:"100%",height:"100%",display:"block",borderRadius:"50%/60%",transform:item.top?"rotate(0deg)":"rotate(180deg)"}'
-							 :src='item.hall_cover'></image>
+						<!-- 展项坐标 -->
+						<image src='../../static/position.png' mode='scaleToFill' @tap='showPic(index)' style='width:100%;height:100%;'></image>
+						<!-- 展项名称 -->
+						<view :style='{fontSize:(12/map.scale)+"px",whiteSpace:"nowrap",position:"absolute",top:(pointer.height*1+(map.scale/2)*10)+"px",left:"50%" ,transform:"translateX(-50%)",background:"rgba(0,0,0,.5)",color:"#fff",paddingLeft:10/map.scale+"px",paddingRight:10/map.scale+"px",borderRadius:10/map.scale+"px"}'>{{item.hall_name}}</view>
+						<!-- 展项图片 -->
+						<view class='show-pic' v-if='item.showPic' @tap='goListDetail(item.z_id)' :flag='item.top' ref='pic' :style='{"bottom":(pointer.height/map.scale*0.85)+"px",transform:item.top?"translateX(-50%)":"translateX(-50%) rotate(180deg)"}'>
+							<image mode='scaleToFill' src='../../static/bgc.png' style='width:100%;height:100%;'></image>
+							<view style='width:84%;height:76%;position:absolute;left:50%;top:6%;transform:translateX(-50%);z-index:3;border-radius:50%;overflow:hidden;text-align:center;'>
+								<image mode='center' :style='{width:"100%",height:"100%",display:"block",borderRadius:"50%/60%",transform:item.top?"rotate(0deg)":"rotate(180deg)"}'
+								 :src='item.hall_cover'></image>
+							</view>
 						</view>
 					</view>
-				</view>
 
+				</div>
 			</movable-view>
 
 		</movable-area>
@@ -56,6 +57,7 @@
 	const pointerH = 23; // 当前地图点图标高度
 	const bmsW = 20; // 后台地图点图标宽度
 	const bmsH = 20; // 后台地图点图标高度
+	const distance = 50; // padding的大小为50px
 	export default {
 		data() {
 			return {
@@ -91,7 +93,7 @@
 				originPointer: {}, // 原始坐标点数据备份 
 			}
 		},
-		
+
 		onLoad(options) {
 			this.e_id = options.e_id;
 			this.title = options.title;
@@ -134,7 +136,7 @@
 							}, 300);
 							return;
 						}
-						res.data.items_position.forEach(function(el, index) {
+						res.data.items_position.forEach(el => {
 							el.showPic = false;
 						});
 						this.img.src = this.$store.state.ajaxUrl + res.data.hall_map;
@@ -150,7 +152,7 @@
 				const width = e.detail.width,
 					height = e.detail.height,
 					tempX = this.windowWidth / width,
-					tempY = this.windowHeight / height;
+					tempY = (this.windowHeight - 100) / height;
 
 				this.img.scale = tempX <= tempY ? tempY : tempX;
 
@@ -167,7 +169,7 @@
 						2.4);
 					el.y = uni.upx2px(((el.hall_position.split(',')[1] * 1 + bmsH / 2) / this.scale) * this.img.scale - pointerH /
 						1.4);
-					el.top = el.y > uni.upx2px(140);
+					el.top = true; // el.y > uni.upx2px(140);
 					el.index = index;
 					el.hall_cover = this.$store.state.ajaxUrl + el.hall_cover;
 				});
@@ -222,7 +224,7 @@
 				this.currentIndex = index;
 				this.pointer.position = position;
 				this.originPointer.position = originPosition;
-				
+
 			},
 
 			bindscale: function(e) {
@@ -243,17 +245,17 @@
 										obj[k] = el[k];
 									}
 								}
+								position.push(obj);
 							}
-							position.push(obj);
 						});
 						pointer[key] = position;
 					} else {
 						pointer[key] = this.originPointer[key];
 					}
 				}
-				pointer.width /= scale;
-				pointer.height /= scale;
-				
+				pointer.width = pointerW / scale;
+				pointer.height = pointerH / scale;
+
 				this.map.scale = scale;
 				this.pointer = pointer;
 
@@ -325,11 +327,6 @@
 
 	.box .map image {
 		display: inline-block;
-	}
-
-	::-webkit-scrollbar {
-		width: 0upx;
-		height: 0upx;
 	}
 
 	.template-nav>view:nth-child(3) {

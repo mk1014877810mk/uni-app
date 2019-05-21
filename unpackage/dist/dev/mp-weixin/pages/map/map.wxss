@@ -36,10 +36,6 @@
 .box .map image.data-v-3a1757a2 {
 	display: inline-block;
 }
-.data-v-3a1757a2::-webkit-scrollbar {
-	width: 0rpx;
-	height: 0rpx;
-}
 .template-nav>view.data-v-3a1757a2:nth-child(3) {
 	color: #09f;
 }
