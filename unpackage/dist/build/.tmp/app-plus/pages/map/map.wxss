@@ -1,9 +1,9 @@
 
-.box .map.data-v-28c41542 {
+.box .map.data-v-53774588 {
 	width: 100%;
 	overflow: hidden;
 }
-.box .another-map.data-v-28c41542 {
+.box .another-map.data-v-53774588 {
 	padding: 10rpx;
 	position: fixed;
 	right: 40rpx;
@@ -14,11 +14,11 @@
 	-webkit-box-shadow: 0 0 6rpx 3rpx rgba(50, 50, 50, .2);
 	        box-shadow: 0 0 6rpx 3rpx rgba(50, 50, 50, .2);
 }
-.box .another-map image.data-v-28c41542 {
+.box .another-map image.data-v-53774588 {
 	width: 50rpx;
 	height: 40rpx;
 }
-.box .current-hall.data-v-28c41542 {
+.box .current-hall.data-v-53774588 {
 	position: fixed;
 	left: 40rpx;
 	top: 40rpx;
@@ -26,20 +26,20 @@
 	font-size: 26rpx;
 	color: #333;
 }
-.box .current-hall1.data-v-28c41542 {
+.box .current-hall1.data-v-53774588 {
 	top: 140rpx;
 }
-.box .another-map>view.data-v-28c41542 {
+.box .another-map>view.data-v-53774588 {
 	font-size: 20rpx;
 	text-align: center;
 }
-.box .map image.data-v-28c41542 {
+.box .map image.data-v-53774588 {
 	display: inline-block;
 }
-.template-nav>view.data-v-28c41542:nth-child(3) {
+.template-nav>view.data-v-53774588:nth-child(3) {
 	color: #09f;
 }
-.show-pic.data-v-28c41542 {
+.show-pic.data-v-53774588 {
 	width: 300%;
 	height: 300%;
 	position: absolute;

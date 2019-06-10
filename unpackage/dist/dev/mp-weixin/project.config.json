@@ -33,7 +33,7 @@
           "name": "test",
           "query": "e_id=4&title=上海自然博物馆",
           "id": 0,
-          "pathName": "pages/map/map"
+          "pathName": "pages/scanAR/scanAR"
         }
       ]
     }

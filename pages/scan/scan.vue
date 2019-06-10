@@ -5,11 +5,13 @@
 				<image mode='aspectFill' :src='logoSrc'></image>
 			</view>
 			<view class='box-tips one-txt-cut'>文化科技，尽在{{title}}</view>
-			<!-- #ifndef H5 -->
+			<!-- #ifdef MP-WEIXIN -->
 			<view class='box-btn' @tap='goScanImg'>扫码导览</view>
+			<view class='box-btn' @tap='goArScan'>AR导览</view>
 			<!-- #endif -->
 			<!-- #ifdef H5 -->
 			<view class='box-btn' @tap='showH5Tips'>扫码导览</view>
+			<view class='box-btn' @tap='showH5Tips'>AR导览</view>
 			<!-- #endif -->
 		</view>
 		<my-nav :index='2' :e_id='e_id' :title='title'></my-nav>
@@ -18,12 +20,13 @@
 
 <script>
 	import myNav from '../components/nav'
+	let isSuccess = false; // 上传图片是否成功
 	export default {
 		data() {
 			return {
 				e_id: '',
 				title: '',
-				logoSrc: ''
+				logoSrc: '',
 			}
 		},
 		onLoad(options) {
@@ -80,10 +83,25 @@
 					}
 				});
 			},
-			
-			showH5Tips(){
+
+			showH5Tips() {
 				this.$common.showTips('浏览器环境下无法使用此功能');
+			},
+
+			goArScan() {
+				// #ifdef  MP-WEIXIN
+				uni.navigateTo({
+					url: '../scanAR/scanAR'
+				})
+				// #endif
+
+
+				// #ifndef  MP-WEIXIN
+				this.$common.showTips('当前环境下无法使用此功能');
+				// #endif
+
 			}
+
 		},
 		components: {
 			myNav
@@ -119,7 +137,7 @@
 		padding: 15rpx 30rpx;
 		background-color: #09f;
 		border-radius: 20rpx;
-		margin-top: 2vh;
+		margin: 2vh 20upx 0;
 		color: #fff;
 	}
 </style>

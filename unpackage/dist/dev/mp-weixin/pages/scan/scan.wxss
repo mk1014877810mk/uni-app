@@ -23,7 +23,7 @@
 	padding: 15rpx 30rpx;
 	background-color: #09f;
 	border-radius: 20rpx;
-	margin-top: 2vh;
+	margin: 2vh 20rpx 0;
 	color: #fff;
 }
 

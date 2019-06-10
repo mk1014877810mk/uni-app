@@ -8,7 +8,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var myNav = function myNav() {return __webpack_require__.e(/*! import() | pages/components/nav */ "pages/components/nav").then(__webpack_require__.bind(null, /*! ../components/nav */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages\\components\\nav.vue"));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var myNav = function myNav() {return __webpack_require__.e(/*! import() | pages/components/nav */ "pages/components/nav").then(__webpack_require__.bind(null, /*! ../components/nav */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages\\components\\nav.vue"));};
 
 
 
@@ -28,7 +28,10 @@
 
 
 
-{
+
+
+var isSuccess = false; // 上传图片是否成功
+var _default = {
   data: function data() {
     return {
       e_id: '',
@@ -93,7 +96,22 @@
 
     showH5Tips: function showH5Tips() {
       this.$common.showTips('浏览器环境下无法使用此功能');
+    },
+
+    goArScan: function goArScan() {
+
+      uni.navigateTo({
+        url: '../scanAR/scanAR' });
+
+
+
+
+
+
+
+
     } },
+
 
   components: {
     myNav: myNav } };exports.default = _default;

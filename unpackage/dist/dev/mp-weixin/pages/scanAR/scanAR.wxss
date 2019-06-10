@@ -1,0 +1,71 @@
+
+.recognition-container.data-v-f37c7230 {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+.btn-area.data-v-f37c7230 {
+	position: absolute;
+	right: 20px;
+	left: 20px;
+	bottom: 5vh;
+	z-index: 1000;
+}
+.btn-area>view.data-v-f37c7230 {
+	text-align: center;
+	line-height: 100rpx;
+}
+.btn-area .btn.data-v-f37c7230 {
+	margin: 0 auto;
+	width: 12vh;
+	height: 12vh;
+	border-radius: 50%;
+	/* box-shadow: 0 0 8rpx 8rpx #ccc; */
+}
+.btn-area .msg-info.data-v-f37c7230 {
+	margin: 0 auto;
+	width: 12vh;
+	height: 12vh;
+	line-height: 12vh;
+	border-radius: 50%;
+}
+camera.data-v-f37c7230 {
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	width: 96vw;
+	height: 80vh;
+}
+cover-view.data-v-f37c7230 {
+	position: absolute;
+	top: 0%;
+	left: 2%;
+	width: 96%;
+	height: 2px;
+	background-color: #09f;
+	-webkit-box-shadow: 0 -2px 3px 1px #09f, 0 2px 3px 1px #09f, -2px 0 3px 1px #09f, 2px 0 3px 1px #09f;
+	        box-shadow: 0 -2px 3px 1px #09f, 0 2px 3px 1px #09f, -2px 0 3px 1px #09f, 2px 0 3px 1px #09f;
+}
+.active.data-v-f37c7230 {
+	-webkit-animation: scaning-data-v-f37c7230 3s infinite linear;
+	        animation: scaning-data-v-f37c7230 3s infinite linear;
+}
+@-webkit-keyframes scaning-data-v-f37c7230 {
+from {
+		top: 0
+}
+to {
+		top: 100%
+}
+}
+@keyframes scaning-data-v-f37c7230 {
+from {
+		top: 0
+}
+to {
+		top: 100%
+}
+}
+
