@@ -25,7 +25,6 @@
 //
 //
 
-var index = 0;
 var isSuccess = false; // ar是否识别成功的状态
 var firstLoad = true;var _default =
 {
@@ -120,7 +119,6 @@ var firstLoad = true;var _default =
 
 
   onShow: function onShow() {
-    index = 0;
     if (!firstLoad) {
       uni.navigateBack();
     }

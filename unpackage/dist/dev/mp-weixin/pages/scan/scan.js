@@ -30,6 +30,13 @@
 
 
 
+
+
+
+
+
+
+
 var isSuccess = false; // 上传图片是否成功
 var _default = {
   data: function data() {
@@ -95,7 +102,58 @@ var _default = {
     },
 
     showH5Tips: function showH5Tips() {
-      this.$common.showTips('浏览器环境下无法使用此功能');
+      this.$common.showTips('当前环境下暂时无法使用此功能');
+    },
+
+    showAppHandle: function showAppHandle() {var _this3 = this;
+      uni.chooseImage({
+        count: 1,
+        sizeType: ['compressed'], //可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['camera '], //从相册选择
+        success: function success(res) {
+          var filePath = res.tempFilePaths[0];
+          console.log(filePath);
+          _this3.uploadPic(filePath);
+        } });
+
+    },
+
+    uploadPic: function uploadPic(file) {var _this4 = this;
+      if (!file) return this.$common.showTIps('请确认照片的完整性');
+      var arSrc = this.$store.state.arUploadSrc;
+      var that = this;
+      this.$common.showLoading('识别中...');
+      uni.uploadFile({
+        url: arSrc,
+        filePath: file,
+        name: 'image',
+        success: function success(res) {
+          if (res.statusCode == 200) {
+            var data = JSON.parse(res.data);
+            console.log('result.name:', data.result.name);
+            if (data.statusCode == 0) {
+              // this.$common.showTips('识别成功')
+              uni.navigateTo({
+                url: '../detail/detail?z_id=88&title=扫码详情'
+                // url: '../detail/detail?z_id=' + data.result.name + '&title=扫码详情',
+              });
+            } else if (data.statusCode == 3) {
+              setTimeout(function () {
+                _this4.$common.showTips('识别失败，请拍识别物正面照片');
+              }, 1000);
+            }
+          }
+        },
+        fail: function fail(err) {
+          console.log('识别失败:', err);
+          setTimeout(function () {
+            _this4.$common.showTips('识别失败，请拍识别物正面照片');
+          }, 1000);
+        },
+        complete: function complete() {
+          _this4.$common.hideLoading();
+        } });
+
     },
 
     goArScan: function goArScan() {

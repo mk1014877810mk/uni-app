@@ -5,13 +5,20 @@
 				<image mode='aspectFill' :src='logoSrc'></image>
 			</view>
 			<view class='box-tips one-txt-cut'>文化科技，尽在{{title}}</view>
-			<!-- #ifdef MP-WEIXIN -->
-			<view class='box-btn' @tap='goScanImg'>扫码导览</view>
-			<view class='box-btn' @tap='goArScan'>AR导览</view>
-			<!-- #endif -->
 			<!-- #ifdef H5 -->
 			<view class='box-btn' @tap='showH5Tips'>扫码导览</view>
 			<view class='box-btn' @tap='showH5Tips'>AR导览</view>
+			<!-- #endif -->
+
+			<!-- #ifdef APP-PLUS -->
+			<view class='box-btn' @tap='goScanImg'>扫码导览</view>
+			<view class='box-btn' @tap='showAppHandle'>拍照识别</view>
+			<!-- #endif -->
+
+			<!-- #ifdef MP-WEIXIN -->
+			<view class='box-btn' @tap='goScanImg'>扫码导览</view>
+			<view class='box-btn' @tap='goArScan'>AR导览</view>
+			<!-- <view class='box-btn' @tap='showAppHandle'>拍照识别</view> -->
 			<!-- #endif -->
 		</view>
 		<my-nav :index='2' :e_id='e_id' :title='title'></my-nav>
@@ -85,7 +92,58 @@
 			},
 
 			showH5Tips() {
-				this.$common.showTips('浏览器环境下无法使用此功能');
+				this.$common.showTips('当前环境下暂时无法使用此功能');
+			},
+
+			showAppHandle() {
+				uni.chooseImage({
+					count: 1,
+					sizeType: ['compressed'], //可以指定是原图还是压缩图，默认二者都有
+					sourceType: ['camera'], 
+					success: res => {
+						const filePath = res.tempFilePaths[0]
+						console.log(filePath);
+						this.uploadPic(filePath);
+					}
+				});
+			},
+
+			uploadPic(file) {
+				if (!file) return this.$common.showTIps('请确认照片的完整性')
+				const arSrc = this.$store.state.arUploadSrc;
+				const that = this;
+				this.$common.showLoading('识别中...');
+				uni.uploadFile({
+					url: arSrc,
+					filePath: file,
+					name: 'image',
+					success: res => {
+						if (res.statusCode == 200) {
+							const data = JSON.parse(res.data);
+							console.log('result.name:', data.result.name)
+							if (data.statusCode == 0) {
+								// this.$common.showTips('识别成功')
+								uni.navigateTo({
+									url: '../detail/detail?z_id=88&title=扫码详情'
+									// url: '../detail/detail?z_id=' + data.result.name + '&title=扫码详情',
+								});
+							} else if (data.statusCode == 3) {
+								setTimeout(() => {
+									this.$common.showTips('识别失败，请拍识别物正面照片');
+								}, 1000);
+							}
+						}
+					},
+					fail: err => {
+						console.log('识别失败:', err);
+						setTimeout(() => {
+							this.$common.showTips('识别失败，请拍识别物正面照片');
+						}, 1000);
+					},
+					complete: () => {
+						this.$common.hideLoading();
+					}
+				});
 			},
 
 			goArScan() {
@@ -97,7 +155,7 @@
 
 
 				// #ifndef  MP-WEIXIN
-				this.$common.showTips('当前环境下无法使用此功能');
+				this.$common.showTips('当前环境下暂时无法使用此功能');
 				// #endif
 
 			}

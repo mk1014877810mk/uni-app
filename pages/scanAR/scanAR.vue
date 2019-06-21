@@ -15,7 +15,6 @@
 </template>
 
 <script>
-	let index = 0;
 	let isSuccess = false; // ar是否识别成功的状态
 	let firstLoad = true;
 	export default {
@@ -110,7 +109,6 @@
 		},
 
 		onShow() {
-			index = 0;
 			if (!firstLoad) {
 				uni.navigateBack();
 			}

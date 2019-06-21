@@ -9,7 +9,9 @@ const showTips = (title, icon = 'none', complete) =>
 	});
 
 
-const showLoading = () => uni.showLoading();
+const showLoading = (title = '加载中...') => uni.showLoading({
+	title
+});
 const hideLoading = () => uni.hideLoading();
 const setNavTitle = title => uni.setNavigationBarTitle({
 	title
