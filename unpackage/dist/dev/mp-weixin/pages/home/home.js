@@ -108,7 +108,41 @@
   },
 
   onLoad: function onLoad(options) {var _this = this;
-    this.e_id = options.e_id;
+
+
+    var sence = decodeURIComponent(options.q);
+    // var sence = 'https://renren.broadmesse.net/detail?e_id=8&i_id=274';  // detail
+    // var sence = 'https://renren.broadmesse.net/map?e_id=4&z_id=87';		// home
+    var exist = sence.indexOf('i_id');
+    var existHome = sence.indexOf('z_id');
+    var oParams = {};
+    var e_id, i_id, z_id;
+    console.log('options:', options, 'sence:', sence, 'exist:', exist, 'existHome:', existHome);
+
+    if (exist != -1) {// 扫码进入详情
+      var aParams = sence.split('?').slice(-1)[0].split('&');
+      aParams.forEach(function (el) {
+        oParams[el.split('=')[0]] = el.split('=')[1];
+      });
+      e_id = oParams.e_id;
+
+      // 跳转
+      uni.navigateTo({
+        url: '../detail/detail?z_id=' + oParams.i_id });
+
+
+    } else if (existHome != -1) {// 扫码进入home页
+
+      var aParams = sence.split('?').slice(-1)[0].split('&');
+      aParams.forEach(function (el) {
+        oParams[el.split('=')[0]] = el.split('=')[1];
+      });
+      e_id = oParams.e_id;
+
+    } else {// 点击进入
+      e_id = options.e_id;
+    }
+    this.e_id = e_id || 8;
     this.$common.showLoading();
     uni.getSystemInfo({
       success: function success(res) {
@@ -116,6 +150,22 @@
         _this.windowHeight = res.windowHeight;
         _this.scale = res.windowWidth / 750;
       } });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   },
 
@@ -352,6 +402,12 @@
 
 
 
+
+  onShow: function onShow() {
+
+    this.$common.setNavTitle(this.title);
+
+  },
 
   components: {
     mySwiper: mySwiper,

@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/home/home",
+    "pages/index/index",
     "pages/detail/detail",
     "pages/list/list",
     "pages/scan/scan",
@@ -19,7 +19,7 @@
     "alwaysShowBeforeRender": true,
     "autoclose": false
   },
-  "appname": "tour",
+  "appname": "扬中博物馆",
   "compilerVersion": "1.9.9",
   "usingComponents": {}
 }

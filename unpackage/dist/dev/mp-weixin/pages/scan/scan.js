@@ -109,7 +109,7 @@ var _default = {
       uni.chooseImage({
         count: 1,
         sizeType: ['compressed'], //可以指定是原图还是压缩图，默认二者都有
-        sourceType: ['camera '], //从相册选择
+        sourceType: ['camera'],
         success: function success(res) {
           var filePath = res.tempFilePaths[0];
           console.log(filePath);

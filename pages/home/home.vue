@@ -98,7 +98,41 @@
 		},
 
 		onLoad(options) {
-			this.e_id = options.e_id;
+
+			// #ifdef MP-WEIXIN
+			var sence = decodeURIComponent(options.q);
+			// var sence = 'https://renren.broadmesse.net/detail?e_id=8&i_id=274';  // detail
+			// var sence = 'https://renren.broadmesse.net/map?e_id=4&z_id=87';		// home
+			var exist = sence.indexOf('i_id');
+			var existHome = sence.indexOf('z_id');
+			var oParams = {};
+			var e_id, i_id, z_id;
+			console.log('options:', options, 'sence:', sence, 'exist:', exist, 'existHome:', existHome);
+
+			if (exist != -1) { // 扫码进入详情
+				var aParams = sence.split('?').slice(-1)[0].split('&');
+				aParams.forEach(function(el) {
+					oParams[el.split('=')[0]] = el.split('=')[1];
+				});
+				e_id = oParams.e_id;
+
+				// 跳转
+				uni.navigateTo({
+					url: '../detail/detail?z_id=' + oParams.i_id,
+				});
+
+			} else if (existHome != -1) { // 扫码进入home页
+
+				var aParams = sence.split('?').slice(-1)[0].split('&');
+				aParams.forEach(function(el) {
+					oParams[el.split('=')[0]] = el.split('=')[1];
+				});
+				e_id = oParams.e_id;
+
+			} else { // 点击进入
+				e_id = options.e_id;
+			}
+			this.e_id = e_id || 8
 			this.$common.showLoading();
 			uni.getSystemInfo({
 				success: res => {
@@ -107,6 +141,22 @@
 					this.scale = res.windowWidth / 750;
 				}
 			});
+			// #endif
+
+
+			// #ifndef MP-WEIXIN
+			this.e_id = options.e_id || 8;
+			this.$common.showLoading();
+			uni.getSystemInfo({
+				success: res => {
+					this.windowWidth = res.windowWidth;
+					this.windowHeight = res.windowHeight;
+					this.scale = res.windowWidth / 750;
+				}
+			});
+
+			// #endif
+
 		},
 
 		onReady() {
@@ -275,18 +325,18 @@
 
 			goList(params) {
 				uni.navigateTo({
-					url: '../list/list?z_id=' + params.z_id+'&title='+this.title
+					url: '../list/list?z_id=' + params.z_id + '&title=' + this.title
 				});
 			},
 
 			goDetail(params) {
 				if (params.e_id) { // 展馆
 					uni.navigateTo({
-						url: '../detail/detail?e_id=' + params.e_id+'&title='+this.title
+						url: '../detail/detail?e_id=' + params.e_id + '&title=' + this.title
 					});
 				} else { // 展厅或展项
 					uni.navigateTo({
-						url: '../detail/detail?z_id=' + params.z_id+'&title='+this.title
+						url: '../detail/detail?z_id=' + params.z_id + '&title=' + this.title
 					});
 				}
 			},
@@ -341,6 +391,12 @@
 			},
 
 
+		},
+		
+		onShow: function() {
+			// #ifdef MP-WEIXIN
+			this.$common.setNavTitle(this.title);
+			// #endif
 		},
 
 		components: {
