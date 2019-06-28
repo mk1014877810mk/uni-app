@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "my-nav": "/pages/components/nav",
     "scroll-y": "/pages/components/scrollY"
-  }
+  },
+  "component": true
 }

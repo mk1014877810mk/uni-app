@@ -1,1 +1,1 @@
-<view bind:__l="__l"><tmp-one class="vue-ref" swiperItemList="{{list}}" swiperText="{{loadText}}" template="{{template}}" data-ref="template1" data-event-opts="{{[['^goDetail',[['goDetail']]]]}}" bind:goDetail="__e"></tmp-one></view>
+<view class="box data-v-ef174cb0" bind:__l="__l"><tmp-one swiperItemList="{{list}}" swiperText="{{loadText}}" template="{{template}}" data-ref="template1" data-event-opts="{{[['^goDetail',[['goDetail']]]]}}" bind:goDetail="__e" class="data-v-ef174cb0 vue-ref"></tmp-one></view>

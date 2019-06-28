@@ -1,1 +1,2 @@
+setCssToHead([".",[1],"box.",[1],"data-v-c3713590{ padding-left: ",[0,10],"; -webkit-box-sizing: border-box; box-sizing: border-box; }\n",],undefined,{path:"./pages/list/list.wxss"})();
 document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/list/list.wxml') } }));

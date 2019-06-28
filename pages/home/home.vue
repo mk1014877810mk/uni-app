@@ -1,66 +1,73 @@
 <template>
-	<div class='box'>
-		<div class='top'>
-			<my-swiper :imgUrls="swiper.imgUrls" @goOtherPage='goDetail'>
-			</my-swiper>
-		</div>
-		<div class='logo'>
-			<div class='logo-left'>
-				<img :src='logoSrc'></img>
+	<div class="contain">
+		<!-- home主页面 -->
+		<div class='box' v-show='navBar.index===1'>
+			<div class='top'>
+				<my-swiper :imgUrls="swiper.imgUrls" @goOtherPage='goDetail'>
+				</my-swiper>
 			</div>
-			<text class='title'>{{title}}</text>
-		</div>
+			<div class='logo'>
+				<div class='logo-left'>
+					<img :src='logoSrc'></img>
+				</div>
+				<text class='title'>{{title}}</text>
+			</div>
 
-		<!-- 内容 -->
-		<div class='tab' v-if='template<4'>
-			<div class='template-big1'>
-				<div class='tab-nav flex'>
-					<div v-for='(item,index) in tab.tabTitle' :key='index' class='hall' @tap='changeBigTab(index,item.z_id)'>
-						<text :class='{"active":tab.currentTab==index}'>{{item.title}}</text>
+			<!-- 内容 -->
+			<div class='tab' v-if='template<4'>
+				<div class='template-big1'>
+					<div class='tab-nav flex'>
+						<div v-for='(item,index) in tab.tabTitle' :key='index' class='hall' @tap='changeBigTab(index,item.z_id)'>
+							<text :class='{"active":tab.currentTab==index}'>{{item.title}}</text>
+						</div>
+					</div>
+					<div :class='{"content-big1":true, "bgc":template!=3}'>
+						<swiper :style='{height:tab.height}' :current='tab.currentTab' class='content1-box' @change='bindChange'>
+							<swiper-item v-for='(items,index) in tab.contents' :key='index'>
+								<block v-if='template==1'>
+									<tmp-one ref='template1' :swiperItemList='items' :swiperText='tab.swiperText[index]' :template='template'
+									 @goDetail='goDetail'></tmp-one>
+								</block>
+
+								<block v-if='template==2'>
+									<tmp-two ref='template2' :swiperItemList='items' :swiperText='tab.swiperText[index]' :template='template'
+									 @goDetail='goDetail'></tmp-two>
+								</block>
+
+								<block v-if='template==3'>
+									<tmp-three ref='template3' :swiperItemList='items' :swiperText='tab.swiperText[index]' :template='template'
+									 @goDetail='goDetail'></tmp-three>
+								</block>
+
+							</swiper-item>
+						</swiper>
 					</div>
 				</div>
-				<div :class='{"content-big1":true, "bgc":template!=3}'>
-					<swiper :style='{height:tab.height}' :current='tab.currentTab' class='content1-box' @change='bindChange'>
-						<swiper-item v-for='(items,index) in tab.contents' :key='index'>
-							<block v-if='template==1'>
-								<tmp-one ref='template1' :swiperItemList='items' :swiperText='tab.swiperText[index]' :template='template'
-								 @goDetail='goDetail'></tmp-one>
-							</block>
-
-							<block v-if='template==2'>
-								<tmp-two ref='template2' :swiperItemList='items' :swiperText='tab.swiperText[index]' :template='template'
-								 @goDetail='goDetail'></tmp-two>
-							</block>
-
-							<block v-if='template==3'>
-								<tmp-three ref='template3' :swiperItemList='items' :swiperText='tab.swiperText[index]' :template='template'
-								 @goDetail='goDetail'></tmp-three>
-							</block>
-
-						</swiper-item>
-					</swiper>
-				</div>
 			</div>
+			<!-- 大于3的模板 -->
+			<view style='min-height:100px' v-else :class='{"another-tab":true, "bgc":template!=6, "interspace":template==5}'>
+
+				<block v-if='template==4'>
+					<tmp-one ref='template4' :swiperItemList='tab.hallList' :swiperText='tab.swiperText[0]' :template='template'
+					 @goList='goList'></tmp-one>
+				</block>
+
+				<block v-if='template==5'>
+					<tmp-two ref='template5' :swiperItemList='tab.hallList' :swiperText='tab.swiperText[0]' :template='template'
+					 @goList='goList'></tmp-two>
+				</block>
+
+				<block v-if='template==6'>
+					<tmp-three ref='template6' :swiperItemList='tab.hallList' :swiperText='tab.swiperText[0]' :template='template'
+					 @goList='goList'></tmp-three>
+				</block>
+			</view>
 		</div>
-		<!-- 大于3的模板 -->
-		<view style='min-height:100px' v-else :class='{"another-tab":true, "bgc":template!=6, "interspace":template==5}'>
 
-			<block v-if='template==4'>
-				<tmp-one ref='template4' :swiperItemList='tab.hallList' :swiperText='tab.swiperText[0]' :template='template'
-				 @goList='goList'></tmp-one>
-			</block>
-
-			<block v-if='template==5'>
-				<tmp-two ref='template5' :swiperItemList='tab.hallList' :swiperText='tab.swiperText[0]' :template='template'
-				 @goList='goList'></tmp-two>
-			</block>
-
-			<block v-if='template==6'>
-				<tmp-three ref='template6' :swiperItemList='tab.hallList' :swiperText='tab.swiperText[0]' :template='template'
-				 @goList='goList'></tmp-three>
-			</block>
-		</view>
-		<my-nav :index='1' :e_id='e_id' :title='title'></my-nav>
+		<tab-scan v-if='navBar.index===2' :title='title' :logoSrc='logoSrc'></tab-scan>
+		<tab-map v-if='navBar.index===3' :e_id='e_id'></tab-map>
+		
+		<my-nav :index='navBar.index' :e_id='e_id' :title='title'></my-nav>
 	</div>
 </template>
 
@@ -70,6 +77,8 @@
 	import tmpTwo from '../components/tmpTwo'
 	import tmpThree from '../components/tmpThree'
 	import myNav from '../components/nav'
+	import tabScan from '../components/scan'
+	import tabMap from '../components/map'
 	export default {
 		data() {
 			return {
@@ -93,6 +102,9 @@
 					swiperText: [], // loadText
 					sendAjaxList: [],
 					hallList: [], // 模板4、5、6列表数据
+				},
+				navBar: {
+					index: 1
 				}
 			}
 		},
@@ -390,9 +402,11 @@
 
 			},
 
-
+			changeBarIndex(index){
+				this.navBar.index = index;
+			}
 		},
-		
+
 		onShow: function() {
 			// #ifdef MP-WEIXIN
 			this.$common.setNavTitle(this.title);
@@ -404,7 +418,9 @@
 			myNav,
 			tmpOne,
 			tmpTwo,
-			tmpThree
+			tmpThree,
+			tabScan,
+			tabMap
 		},
 
 		onReachBottom() {

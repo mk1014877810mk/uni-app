@@ -8,7 +8,16 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var mySwiper = function mySwiper() {return __webpack_require__.e(/*! import() | pages/components/swiper */ "pages/components/swiper").then(__webpack_require__.bind(null, /*! ../components/swiper */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages\\components\\swiper.vue"));};var tmpOne = function tmpOne() {return __webpack_require__.e(/*! import() | pages/components/tmpOne */ "pages/components/tmpOne").then(__webpack_require__.bind(null, /*! ../components/tmpOne */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages\\components\\tmpOne.vue"));};var tmpTwo = function tmpTwo() {return __webpack_require__.e(/*! import() | pages/components/tmpTwo */ "pages/components/tmpTwo").then(__webpack_require__.bind(null, /*! ../components/tmpTwo */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages\\components\\tmpTwo.vue"));};var tmpThree = function tmpThree() {return __webpack_require__.e(/*! import() | pages/components/tmpThree */ "pages/components/tmpThree").then(__webpack_require__.bind(null, /*! ../components/tmpThree */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages\\components\\tmpThree.vue"));};var myNav = function myNav() {return __webpack_require__.e(/*! import() | pages/components/nav */ "pages/components/nav").then(__webpack_require__.bind(null, /*! ../components/nav */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages\\components\\nav.vue"));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var mySwiper = function mySwiper() {return __webpack_require__.e(/*! import() | pages/components/swiper */ "pages/components/swiper").then(__webpack_require__.bind(null, /*! ../components/swiper */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages\\components\\swiper.vue"));};var tmpOne = function tmpOne() {return __webpack_require__.e(/*! import() | pages/components/tmpOne */ "pages/components/tmpOne").then(__webpack_require__.bind(null, /*! ../components/tmpOne */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages\\components\\tmpOne.vue"));};var tmpTwo = function tmpTwo() {return __webpack_require__.e(/*! import() | pages/components/tmpTwo */ "pages/components/tmpTwo").then(__webpack_require__.bind(null, /*! ../components/tmpTwo */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages\\components\\tmpTwo.vue"));};var tmpThree = function tmpThree() {return __webpack_require__.e(/*! import() | pages/components/tmpThree */ "pages/components/tmpThree").then(__webpack_require__.bind(null, /*! ../components/tmpThree */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages\\components\\tmpThree.vue"));};var myNav = function myNav() {return __webpack_require__.e(/*! import() | pages/components/nav */ "pages/components/nav").then(__webpack_require__.bind(null, /*! ../components/nav */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages\\components\\nav.vue"));};var tabScan = function tabScan() {return __webpack_require__.e(/*! import() | pages/components/scan */ "pages/components/scan").then(__webpack_require__.bind(null, /*! ../components/scan */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages\\components\\scan.vue"));};var tabMap = function tabMap() {return __webpack_require__.e(/*! import() | pages/components/map */ "pages/components/map").then(__webpack_require__.bind(null, /*! ../components/map */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages\\components\\map.vue"));};var _default =
+
+
+
+
+
+
+
+
+
 
 
 
@@ -103,7 +112,10 @@
         swiperText: [], // loadText
         sendAjaxList: [],
         hallList: [] // 模板4、5、6列表数据
-      } };
+      },
+      navBar: {
+        index: 1 } };
+
 
   },
 
@@ -398,9 +410,11 @@
 
       });
 
+    },
+
+    changeBarIndex: function changeBarIndex(index) {
+      this.navBar.index = index;
     } },
-
-
 
 
   onShow: function onShow() {
@@ -414,7 +428,9 @@
     myNav: myNav,
     tmpOne: tmpOne,
     tmpTwo: tmpTwo,
-    tmpThree: tmpThree },
+    tmpThree: tmpThree,
+    tabScan: tabScan,
+    tabMap: tabMap },
 
 
   onReachBottom: function onReachBottom() {var _this8 = this;

@@ -30,8 +30,7 @@
 //
 //
 
-var icon = [
-{
+var icon = [{
   def: '../../static/icon-index.png',
   sele: '../../static/icon-index1.png' },
 
@@ -55,53 +54,38 @@ var icon = [
         first: icon[0].def,
         second: icon[1].def,
         third: icon[2].def,
-        fourth: icon[3].def } };
+        fourth: icon[3].def },
 
+      currentIndex: 1 };
 
   },
   methods: {
     navJump: function navJump(e) {
       var currentIndex = 1 * e.currentTarget.dataset.index;
-      if (this.index == currentIndex) return;
-      switch (currentIndex) {
-        case 1:
-          uni.redirectTo({
-            url: '../home/home?e_id=' + this.e_id + '&title=' + this.title });
 
-          break;
-        case 2:
-          uni.redirectTo({
-            url: '../scan/scan?e_id=' + this.e_id + '&title=' + this.title });
+      if (currentIndex < 4) {
+        this.currentIndex = currentIndex;
+        this.changeBarImg(currentIndex);
+        this.$parent.changeBarIndex(currentIndex);
+      } else {
+        uni.navigateTo({
+          url: '../3Dview/3Dview?e_id=' + this.e_id + '&title=' + this.title });
 
-          break;
-        case 3:
-          uni.redirectTo({
-            url: '../map/map?e_id=' + this.e_id + '&title=' + this.title });
+      }
+    },
+    changeBarImg: function changeBarImg(currentIndex) {
+      var indexArr = ['first', 'second', 'third', 'fourth'];
+      this.iconSrc = {
+        first: icon[0].def,
+        second: icon[1].def,
+        third: icon[2].def,
+        fourth: icon[3].def };
 
-          break;
-        case 4:
-          uni.navigateTo({
-            url: '../3Dview/3Dview?e_id=' + this.e_id + '&title=' + this.title });
-
-          break;}
-
+      this.iconSrc[indexArr[currentIndex - 1]] = icon[currentIndex - 1].sele;
     } },
 
   created: function created() {
-    switch (this.index) {
-      case 1:
-        this.iconSrc.first = icon[0].sele;
-        break;
-      case 2:
-        this.iconSrc.second = icon[1].sele;
-        break;
-      case 3:
-        this.iconSrc.third = icon[2].sele;
-        break;
-      case 4:
-        this.iconSrc.fourth = icon[3].sele;
-        break;}
-
+    this.changeBarImg(this.index);
   },
   props: ['index', 'e_id', 'title'] };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))

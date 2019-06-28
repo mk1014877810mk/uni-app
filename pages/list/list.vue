@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="box">
 		<tmp-one ref='template1' :swiperItemList='list' :swiperText='loadText' :template='template' @goDetail='goDetail'></tmp-one>
 	</view>
 </template>
@@ -76,6 +76,9 @@
 	}
 </script>
 
-<style>
-
+<style scoped>
+	.box{
+		padding-left: 10upx;
+		box-sizing: border-box;
+	}
 </style>

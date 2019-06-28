@@ -4,8 +4,6 @@
     "pages/index/index",
     "pages/detail/detail",
     "pages/list/list",
-    "pages/scan/scan",
-    "pages/map/map",
     "pages/scanAR/scanAR",
     "pages/3Dview/3Dview"
   ],

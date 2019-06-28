@@ -1,5 +1,5 @@
 <template>
-	<view class="box">
+	<view class="box" style='min-height: 92vh'>
 		<view class='box-content'>
 			<view class='box-top'>
 				<image mode='aspectFill' :src='logoSrc'></image>
@@ -21,40 +21,38 @@
 			<!-- <view class='box-btn' @tap='showAppHandle'>拍照识别</view> -->
 			<!-- #endif -->
 		</view>
-		<my-nav :index='2' :e_id='e_id' :title='title'></my-nav>
+		<!-- <my-nav :index='2' :e_id='e_id' :title='title'></my-nav> -->
 	</view>
 </template>
 
 <script>
-	import myNav from '../components/nav'
+	// import myNav from '../components/nav'
 	let isSuccess = false; // 上传图片是否成功
 	export default {
 		data() {
 			return {
-				e_id: '',
-				title: '',
-				logoSrc: '',
+				e_id: ''
 			}
 		},
 		onLoad(options) {
-			this.e_id = options.e_id;
-			this.title = options.title;
-			this.$common.setNavTitle(this.title);
-			this.getHallInfo();
+			// this.e_id = options.e_id;
+			// this.title = options.title;
+			// this.$common.setNavTitle(this.title);
+			// this.getHallInfo();
 		},
 		methods: {
-			getHallInfo() {
-				this.$api.getHallInfo({
-					e_id: this.e_id
-				}).then(res => {
-					if (res.status == 1000) {
-						this.$common.setNavTitle(res.data.hall_name);
-						this.logoSrc = this.$store.state.ajaxUrl + res.data.hall_logo;
-					}
-				}).catch(err => {
-					console.log('展厅信息获取失败');
-				})
-			},
+			// getHallInfo() {
+			// 	this.$api.getHallInfo({
+			// 		e_id: this.e_id
+			// 	}).then(res => {
+			// 		if (res.status == 1000) {
+			// 			this.$common.setNavTitle(res.data.hall_name);
+			// 			this.logoSrc = this.$store.state.ajaxUrl + res.data.hall_logo;
+			// 		}
+			// 	}).catch(err => {
+			// 		console.log('展厅信息获取失败');
+			// 	})
+			// },
 
 			goScanImg() {
 				uni.scanCode({
@@ -161,8 +159,9 @@
 			}
 
 		},
+		props:['logoSrc','title'],
 		components: {
-			myNav
+			// myNav
 		}
 	}
 </script>
@@ -173,14 +172,15 @@
 	}
 
 	.box-content .box-top {
-		padding: 70rpx;
+		padding: 100rpx;
+		box-sizing: border-box;
 		background-color: #ccc;
 	}
 
 	.box-content .box-top image {
 		display: block;
-		width: 610rpx;
-		height: 610rpx;
+		width: 550rpx;
+		height: 550rpx;
 		box-sizing: border-box;
 		border: 20rpx solid #fff;
 	}

@@ -2,26 +2,25 @@
 	<view class='template-nav flex'>
 		<view @tap='navJump' data-index='1'>
 			<image class="icon1" mode='scaleToFill' :src='iconSrc.first'></image>
-			<view class='text' :class="{'active': index==1}">展项</view>
+			<view class='text' :class="{'active': currentIndex==1}">展项</view>
 		</view>
 		<view @tap='navJump' data-index='2'>
 			<image class="icon2" :src='iconSrc.second'></image>
-			<view class='text' :class="{'active': index==2}">扫描</view>
+			<view class='text' :class="{'active': currentIndex==2}">扫描</view>
 		</view>
 		<view @tap='navJump' data-index='3'>
 			<image class="icon3" :src='iconSrc.third'></image>
-			<view class='text' :class="{'active': index==3}">地图</view>
+			<view class='text' :class="{'active': currentIndex==3}">地图</view>
 		</view>
 		<view @tap='navJump' data-index='4'>
 			<image class="icon4" :src='iconSrc.fourth'></image>
-			<view class='text' :class="{'active': index==4}">3D</view>
+			<view class='text' :class="{'active': currentIndex==4}">3D</view>
 		</view>
 	</view>
 </template>
 
 <script>
-	const icon = [
-		{
+	const icon = [{
 			def: '../../static/icon-index.png',
 			sele: '../../static/icon-index1.png'
 		},
@@ -47,51 +46,36 @@
 					third: icon[2].def,
 					fourth: icon[3].def
 				},
+				currentIndex: 1
 			};
 		},
 		methods: {
 			navJump(e) {
 				const currentIndex = 1 * e.currentTarget.dataset.index;
-				if (this.index == currentIndex) return;
-				switch (currentIndex) {
-					case 1:
-						uni.redirectTo({
-							url: '../home/home?e_id=' + this.e_id + '&title=' + this.title
-						});
-						break;
-					case 2:
-						uni.redirectTo({
-							url: '../scan/scan?e_id=' + this.e_id + '&title=' + this.title
-						});
-						break;
-					case 3:
-						uni.redirectTo({
-							url: '../map/map?e_id=' + this.e_id + '&title=' + this.title
-						});
-						break;
-					case 4:
-						uni.navigateTo({
-							url: '../3Dview/3Dview?e_id=' + this.e_id + '&title=' + this.title
-						})
-						break;
+
+				if (currentIndex < 4) {
+					this.currentIndex = currentIndex;
+					this.changeBarImg(currentIndex);
+					this.$parent.changeBarIndex(currentIndex);
+				} else {
+					uni.navigateTo({
+						url: '../3Dview/3Dview?e_id=' + this.e_id + '&title=' + this.title
+					})
 				}
+			},
+			changeBarImg(currentIndex) {
+				const indexArr = ['first', 'second', 'third', 'fourth']
+				this.iconSrc = {
+					first: icon[0].def,
+					second: icon[1].def,
+					third: icon[2].def,
+					fourth: icon[3].def
+				}
+				this.iconSrc[indexArr[currentIndex - 1]] = icon[currentIndex - 1].sele;
 			}
 		},
 		created() {
-			switch (this.index) {
-				case 1:
-					this.iconSrc.first = icon[0].sele;
-					break;
-				case 2:
-					this.iconSrc.second = icon[1].sele;
-					break;
-				case 3:
-					this.iconSrc.third = icon[2].sele;
-					break;
-				case 4:
-					this.iconSrc.fourth = icon[3].sele;
-					break;
-			}
+			this.changeBarImg(this.index)
 		},
 		props: ['index', 'e_id', 'title']
 	}
@@ -135,10 +119,14 @@
 		width: 50upx;
 		height: 52upx;
 	}
-	
+
 	.template-nav .icon4 {
 		width: 56upx;
 		height: 54upx;
+	}
+	
+	.template-nav .text{
+		text-align: center;
 	}
 
 	.active {

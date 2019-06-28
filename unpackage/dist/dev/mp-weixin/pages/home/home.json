@@ -4,6 +4,8 @@
     "my-nav": "/pages/components/nav",
     "tmp-one": "/pages/components/tmpOne",
     "tmp-two": "/pages/components/tmpTwo",
-    "tmp-three": "/pages/components/tmpThree"
+    "tmp-three": "/pages/components/tmpThree",
+    "tab-scan": "/pages/components/scan",
+    "tab-map": "/pages/components/map"
   }
 }
