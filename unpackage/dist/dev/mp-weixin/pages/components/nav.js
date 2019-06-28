@@ -24,8 +24,14 @@
 //
 //
 //
+//
+//
+//
+//
+//
 
-var icon = [{
+var icon = [
+{
   def: '../../static/icon-index.png',
   sele: '../../static/icon-index1.png' },
 
@@ -35,7 +41,11 @@ var icon = [{
 
 {
   def: '../../static/icon-map.png',
-  sele: '../../static/icon-map1.png' }];var _default =
+  sele: '../../static/icon-map1.png' },
+
+{
+  def: '../../static/icon-3d.png',
+  sele: '../../static/icon-3d1.png' }];var _default =
 
 
 {
@@ -44,7 +54,8 @@ var icon = [{
       iconSrc: {
         first: icon[0].def,
         second: icon[1].def,
-        third: icon[2].def } };
+        third: icon[2].def,
+        fourth: icon[3].def } };
 
 
   },
@@ -67,6 +78,11 @@ var icon = [{
           uni.redirectTo({
             url: '../map/map?e_id=' + this.e_id + '&title=' + this.title });
 
+          break;
+        case 4:
+          uni.navigateTo({
+            url: '../3Dview/3Dview?e_id=' + this.e_id + '&title=' + this.title });
+
           break;}
 
     } },
@@ -81,6 +97,9 @@ var icon = [{
         break;
       case 3:
         this.iconSrc.third = icon[2].sele;
+        break;
+      case 4:
+        this.iconSrc.fourth = icon[3].sele;
         break;}
 
   },

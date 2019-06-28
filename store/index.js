@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
 	state: {
-		arUploadSrc:'https://dl.broadmesse.net/librarySide/frontend/web/easyar',
+		arUploadSrc:'https://renren.broadmesse.net/tour/web/arscanning',
 		ajaxUrl: 'https://renren.broadmesse.net/tour/web/',
 		lastHallZid:''
 	},

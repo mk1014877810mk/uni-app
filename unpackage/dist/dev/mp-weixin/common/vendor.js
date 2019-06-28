@@ -8121,6 +8121,23 @@ createApp(app).$mount();
 
 /***/ }),
 
+/***/ "D:\\Kun Meng\\HBuilderProjects\\tour\\main.js?{\"page\":\"pages%2F3Dview%2F3Dview\"}":
+/*!************************************************************************************!*\
+  !*** D:/Kun Meng/HBuilderProjects/tour/main.js?{"page":"pages%2F3Dview%2F3Dview"} ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _Dview = _interopRequireDefault(__webpack_require__(/*! ./pages/3Dview/3Dview.vue */ "D:\\Kun Meng\\HBuilderProjects\\tour\\pages\\3Dview\\3Dview.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_Dview.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
 /***/ "D:\\Kun Meng\\HBuilderProjects\\tour\\main.js?{\"page\":\"pages%2Fdetail%2Fdetail\"}":
 /*!************************************************************************************!*\
   !*** D:/Kun Meng/HBuilderProjects/tour/main.js?{"page":"pages%2Fdetail%2Fdetail"} ***!
@@ -8267,7 +8284,7 @@ _vue.default.use(_vuex.default);
 
 var store = new _vuex.default.Store({
   state: {
-    arUploadSrc: 'https://dl.broadmesse.net/librarySide/frontend/web/easyar',
+    arUploadSrc: 'https://renren.broadmesse.net/tour/web/arscanning',
     ajaxUrl: 'https://renren.broadmesse.net/tour/web/',
     lastHallZid: '' },
 
