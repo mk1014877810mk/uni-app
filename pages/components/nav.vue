@@ -12,7 +12,7 @@
 			<image class="icon3" :src='iconSrc.third'></image>
 			<view class='text' :class="{'active': currentIndex==3}">地图</view>
 		</view>
-		<view @tap='navJump' data-index='4'>
+		<view v-if='show3D' @tap='navJump' data-index='4'>
 			<image class="icon4" :src='iconSrc.fourth'></image>
 			<view class='text' :class="{'active': currentIndex==4}">3D</view>
 		</view>
@@ -46,21 +46,22 @@
 					third: icon[2].def,
 					fourth: icon[3].def
 				},
-				currentIndex: 1
+				currentIndex: 1,
+				show3D: true,
+				url3D: ''
 			};
 		},
 		methods: {
 			navJump(e) {
 				const currentIndex = 1 * e.currentTarget.dataset.index;
-
 				if (currentIndex < 4) {
 					this.currentIndex = currentIndex;
 					this.changeBarImg(currentIndex);
 					this.$parent.changeBarIndex(currentIndex);
 				} else {
 					uni.navigateTo({
-						url: '../3Dview/3Dview?e_id=' + this.e_id + '&title=' + this.title
-					})
+						url: '../3Dview/3Dview?e_id=' + this.e_id + '&title=' + this.title + '&url=' + this.url3D
+					});
 				}
 			},
 			changeBarImg(currentIndex) {
@@ -72,10 +73,22 @@
 					fourth: icon[3].def
 				}
 				this.iconSrc[indexArr[currentIndex - 1]] = icon[currentIndex - 1].sele;
+			},
+			getNav(e_id) {
+				this.$api.getNav({
+					hall_id: e_id
+				}).then(res => {
+					if (res.status == 1006) {
+						this.show3D = false
+					} else if (res.status == 1000) {
+						this.url3D = res.data.pano_url
+					}
+				})
 			}
 		},
 		created() {
-			this.changeBarImg(this.index)
+			this.changeBarImg(this.index);
+			this.getNav(this.e_id);
 		},
 		props: ['index', 'e_id', 'title']
 	}
@@ -124,8 +137,8 @@
 		width: 56upx;
 		height: 54upx;
 	}
-	
-	.template-nav .text{
+
+	.template-nav .text {
 		text-align: center;
 	}
 

@@ -1,1 +1,1 @@
-<view bind:__l="__l"><web-view src="https://vr.broadmesse.net/tour/9c320ff3e59cbce9"></web-view></view>
+<view bind:__l="__l"><web-view src="{{src}}"></web-view></view>

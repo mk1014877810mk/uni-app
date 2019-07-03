@@ -1,14 +1,14 @@
 
-.box-content.data-v-e16514ce {
+.box-content.data-v-275ad5a8 {
 	text-align: center;
 }
-.box-content .box-top.data-v-e16514ce {
+.box-content .box-top.data-v-275ad5a8 {
 	padding: 100rpx;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 	background-color: #ccc;
 }
-.box-content .box-top image.data-v-e16514ce {
+.box-content .box-top image.data-v-275ad5a8 {
 	display: block;
 	width: 550rpx;
 	height: 550rpx;
@@ -16,11 +16,11 @@
 	        box-sizing: border-box;
 	border: 20rpx solid #fff;
 }
-.box-content .box-tips.data-v-e16514ce {
+.box-content .box-tips.data-v-275ad5a8 {
 	padding: 4vh 0;
 	font-size: 36rpx;
 }
-.box-content .box-btn.data-v-e16514ce {
+.box-content .box-btn.data-v-275ad5a8 {
 	display: inline-block;
 	padding: 15rpx 30rpx;
 	background-color: #09f;

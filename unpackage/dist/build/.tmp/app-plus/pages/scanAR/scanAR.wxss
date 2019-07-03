@@ -1,44 +1,44 @@
 
-.recognition-container.data-v-171039bc {
+.recognition-container.data-v-46d1da28 {
 	position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
 }
-.btn-area.data-v-171039bc {
+.btn-area.data-v-46d1da28 {
 	position: absolute;
 	right: 20px;
 	left: 20px;
 	bottom: 5vh;
 	z-index: 1000;
 }
-.btn-area>view.data-v-171039bc {
+.btn-area>view.data-v-46d1da28 {
 	text-align: center;
 	line-height: 100rpx;
 }
-.btn-area .btn.data-v-171039bc {
+.btn-area .btn.data-v-46d1da28 {
 	margin: 0 auto;
 	width: 12vh;
 	height: 12vh;
 	border-radius: 50%;
 	/* box-shadow: 0 0 8rpx 8rpx #ccc; */
 }
-.btn-area .msg-info.data-v-171039bc {
+.btn-area .msg-info.data-v-46d1da28 {
 	margin: 0 auto;
 	width: 12vh;
 	height: 12vh;
 	line-height: 12vh;
 	border-radius: 50%;
 }
-camera.data-v-171039bc {
+camera.data-v-46d1da28 {
 	position: relative;
 	display: block;
 	margin: 0 auto;
 	width: 96vw;
 	height: 80vh;
 }
-cover-view.data-v-171039bc {
+cover-view.data-v-46d1da28 {
 	position: absolute;
 	top: 0%;
 	left: 2%;
@@ -48,11 +48,11 @@ cover-view.data-v-171039bc {
 	-webkit-box-shadow: 0 -2px 3px 1px #09f, 0 2px 3px 1px #09f, -2px 0 3px 1px #09f, 2px 0 3px 1px #09f;
 	        box-shadow: 0 -2px 3px 1px #09f, 0 2px 3px 1px #09f, -2px 0 3px 1px #09f, 2px 0 3px 1px #09f;
 }
-.active.data-v-171039bc {
-	-webkit-animation: scaning-data-v-171039bc 3s infinite linear;
-	        animation: scaning-data-v-171039bc 3s infinite linear;
+.active.data-v-46d1da28 {
+	-webkit-animation: scaning-data-v-46d1da28 3s infinite linear;
+	        animation: scaning-data-v-46d1da28 3s infinite linear;
 }
-@-webkit-keyframes scaning-data-v-171039bc {
+@-webkit-keyframes scaning-data-v-46d1da28 {
 from {
 		top: 0
 }
@@ -60,7 +60,7 @@ to {
 		top: 100%
 }
 }
-@keyframes scaning-data-v-171039bc {
+@keyframes scaning-data-v-46d1da28 {
 from {
 		top: 0
 }

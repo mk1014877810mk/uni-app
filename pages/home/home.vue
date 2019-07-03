@@ -64,7 +64,7 @@
 			</view>
 		</div>
 
-		<tab-scan v-if='navBar.index===2' :title='title' :logoSrc='logoSrc'></tab-scan>
+		<tab-scan v-if='navBar.index===2' :title='title' :logoSrc='logoSrc' :e_id='e_id'></tab-scan>
 		<tab-map v-if='navBar.index===3' :e_id='e_id'></tab-map>
 		
 		<my-nav :index='navBar.index' :e_id='e_id' :title='title'></my-nav>

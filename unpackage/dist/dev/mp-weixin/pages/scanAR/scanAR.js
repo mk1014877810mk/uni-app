@@ -94,9 +94,9 @@ var firstLoad = true;var _default =
             console.log('result.name:', data.result.name);
             if (data.statusCode == 0) {
               uni.navigateTo({
-                url: '../detail/detail?z_id=88&title=扫码详情'
-                // url: '../detail/detail?z_id=' + data.result.name + '&title=扫码详情',
-              });
+                // url: '../detail/detail?z_id=88&title=扫码详情'
+                url: '../detail/detail?z_id=' + data.result.name + '&title=扫码详情' });
+
               _this3.scaning = false;
               isSuccess = true;
             }

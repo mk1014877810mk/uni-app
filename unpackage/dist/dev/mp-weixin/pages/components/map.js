@@ -60,9 +60,6 @@
 
 
 
-
-
-
 var pointerW = 23; // 当前地图点图标宽度
 var pointerH = 23; // 当前地图点图标高度
 var bmsW = 20; // 后台地图点图标宽度
@@ -71,7 +68,6 @@ var distance = 50; // padding的大小为50px
 var _default = {
   data: function data() {
     return {
-      // e_id: 1,
       title: '',
       windowWidth: 0,
       windowHeight: 0,
@@ -103,24 +99,6 @@ var _default = {
       originPointer: {} // 原始坐标点数据备份 
     };
   },
-  // 
-  // 		onLoad(options) {
-  // 			// this.e_id = options.e_id;
-  // 			console.log(this.e_id)
-  // 			// this.title = options.title;
-  // 			// this.$common.setNavTitle(this.title);
-  // 			this.z_id = this.$store.state.lastHallZid || 87;
-  // 			this.getHallInfo();
-  // 			this.getMap(this.z_id);
-  // 			uni.getSystemInfo({
-  // 				success: res => {
-  // 					this.scale = res.windowWidth / 750;
-  // 					this.map.height = res.windowHeight - 100 * this.scale;
-  // 					this.windowHeight = res.windowHeight - 100 * this.scale;
-  // 					this.windowWidth = res.windowWidth;
-  // 				}
-  // 			});
-  // 		},
 
   created: function created() {var _this = this;
     this.z_id = this.$store.state.lastHallZid;
@@ -306,7 +284,6 @@ var _default = {
 
   props: ['e_id'],
   components: {
-    // myNav,
     scrollY: scrollY } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 

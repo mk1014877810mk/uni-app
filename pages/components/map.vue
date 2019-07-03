@@ -45,13 +45,10 @@
 		<block>
 			<scroll-y :showList.sync='showList' :e_id='e_id' :logoSrc='logoSrc' :z_id='z_id'></scroll-y>
 		</block>
-
-		<!-- <my-nav :index='3' :e_id='e_id' :title='title'></my-nav> -->
 	</view>
 </template>
 
 <script>
-	// import myNav from '../components/nav'
 	import scrollY from '../components/scrollY'
 	const pointerW = 23; // 当前地图点图标宽度
 	const pointerH = 23; // 当前地图点图标高度
@@ -61,7 +58,6 @@
 	export default {
 		data() {
 			return {
-				// e_id: 1,
 				title: '',
 				windowWidth: 0,
 				windowHeight: 0,
@@ -93,24 +89,6 @@
 				originPointer: {}, // 原始坐标点数据备份 
 			}
 		},
-// 
-// 		onLoad(options) {
-// 			// this.e_id = options.e_id;
-// 			console.log(this.e_id)
-// 			// this.title = options.title;
-// 			// this.$common.setNavTitle(this.title);
-// 			this.z_id = this.$store.state.lastHallZid || 87;
-// 			this.getHallInfo();
-// 			this.getMap(this.z_id);
-// 			uni.getSystemInfo({
-// 				success: res => {
-// 					this.scale = res.windowWidth / 750;
-// 					this.map.height = res.windowHeight - 100 * this.scale;
-// 					this.windowHeight = res.windowHeight - 100 * this.scale;
-// 					this.windowWidth = res.windowWidth;
-// 				}
-// 			});
-// 		},
 		
 		created() {
 			this.z_id = this.$store.state.lastHallZid;
@@ -296,7 +274,6 @@
 		
 		props:['e_id'],
 		components: {
-			// myNav,
 			scrollY
 		}
 	}

@@ -7,53 +7,31 @@
 			<view class='box-tips one-txt-cut'>文化科技，尽在{{title}}</view>
 			<!-- #ifdef H5 -->
 			<view class='box-btn' @tap='showH5Tips'>扫码导览</view>
-			<view class='box-btn' @tap='showH5Tips'>AR导览</view>
+			<view v-if='showBtn' class='box-btn' @tap='showH5Tips'>AR导览</view>
 			<!-- #endif -->
 
 			<!-- #ifdef APP-PLUS -->
 			<view class='box-btn' @tap='goScanImg'>扫码导览</view>
-			<view class='box-btn' @tap='showAppHandle'>拍照识别</view>
+			<view v-if='showBtn' class='box-btn' @tap='showAppHandle'>拍照识别</view>
 			<!-- #endif -->
 
 			<!-- #ifdef MP-WEIXIN -->
 			<view class='box-btn' @tap='goScanImg'>扫码导览</view>
-			<view class='box-btn' @tap='goArScan'>AR导览</view>
-			<!-- <view class='box-btn' @tap='showAppHandle'>拍照识别</view> -->
+			<view v-if='showBtn' class='box-btn' @tap='goArScan'>AR导览</view>
 			<!-- #endif -->
 		</view>
-		<!-- <my-nav :index='2' :e_id='e_id' :title='title'></my-nav> -->
 	</view>
 </template>
 
 <script>
-	// import myNav from '../components/nav'
 	let isSuccess = false; // 上传图片是否成功
 	export default {
 		data() {
 			return {
-				e_id: ''
+				showBtn: false
 			}
 		},
-		onLoad(options) {
-			// this.e_id = options.e_id;
-			// this.title = options.title;
-			// this.$common.setNavTitle(this.title);
-			// this.getHallInfo();
-		},
 		methods: {
-			// getHallInfo() {
-			// 	this.$api.getHallInfo({
-			// 		e_id: this.e_id
-			// 	}).then(res => {
-			// 		if (res.status == 1000) {
-			// 			this.$common.setNavTitle(res.data.hall_name);
-			// 			this.logoSrc = this.$store.state.ajaxUrl + res.data.hall_logo;
-			// 		}
-			// 	}).catch(err => {
-			// 		console.log('展厅信息获取失败');
-			// 	})
-			// },
-
 			goScanImg() {
 				uni.scanCode({
 					success: res => {
@@ -97,7 +75,7 @@
 				uni.chooseImage({
 					count: 1,
 					sizeType: ['compressed'], //可以指定是原图还是压缩图，默认二者都有
-					sourceType: ['camera'], 
+					sourceType: ['camera'],
 					success: res => {
 						const filePath = res.tempFilePaths[0]
 						console.log(filePath);
@@ -122,8 +100,8 @@
 							if (data.statusCode == 0) {
 								// this.$common.showTips('识别成功')
 								uni.navigateTo({
-									url: '../detail/detail?z_id=88&title=扫码详情'
-									// url: '../detail/detail?z_id=' + data.result.name + '&title=扫码详情',
+									// url: '../detail/detail?z_id=88&title=扫码详情'
+									url: '../detail/detail?z_id=' + data.result.name + '&title=扫码详情',
 								});
 							} else if (data.statusCode == 3) {
 								setTimeout(() => {
@@ -156,13 +134,25 @@
 				this.$common.showTips('当前环境下暂时无法使用此功能');
 				// #endif
 
+			},
+
+			isShowARBtn(e_id) {
+				this.$api.isShowARBtn({
+					e_id
+				}).then(res => {
+					if (res.status == 1000) {
+						this.showBtn = res.data.status == '1'
+					}
+				}).catch(err => {
+					console.log('是否展示ar按钮获取失败', err)
+				})
 			}
 
 		},
-		props:['logoSrc','title'],
-		components: {
-			// myNav
-		}
+		mounted() {
+			this.isShowARBtn(this.e_id)
+		},
+		props: ['logoSrc', 'title', 'e_id'],
 	}
 </script>
 

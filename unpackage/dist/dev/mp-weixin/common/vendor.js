@@ -8252,16 +8252,14 @@ var store = new _vuex.default.Store({
   state: {
     arUploadSrc: 'https://renren.broadmesse.net/tour/web/arscanning',
     ajaxUrl: 'https://renren.broadmesse.net/tour/web/',
+    // ajaxUrl: 'http://teng.com/tour/web/',
     lastHallZid: '' },
 
   mutations: {
     setLastHallZid: function setLastHallZid(state, z_id) {
       state.lastHallZid = z_id;
-    } },
+    } } });var _default =
 
-  actions: {
-    // lazy loading openid
-  } });var _default =
 
 
 store;exports.default = _default;
@@ -8288,7 +8286,13 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   getInteractive: function getInteractive(data) {return (0, _request.default)('applets/items', 'get', data);},
 
   // map
-  getMap: function getMap(data) {return (0, _request.default)('applets/map', 'get', data);} };exports.default = _default;
+  getMap: function getMap(data) {return (0, _request.default)('applets/map', 'get', data);},
+
+  // nav
+  getNav: function getNav(data) {return (0, _request.default)('pano/url', 'get', data);},
+
+  // scan
+  isShowARBtn: function isShowARBtn(data) {return (0, _request.default)('easyar/obtain-status', 'get', data);} };exports.default = _default;
 
 /***/ }),
 

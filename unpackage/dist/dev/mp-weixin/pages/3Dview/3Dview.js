@@ -21,11 +21,13 @@ var _nav = _interopRequireDefault(__webpack_require__(/*! ../components/nav */ "
 //
 //
 //
-var _default = { data: function data() {return { title: '', e_id: '' };
+var _default = { data: function data() {return { title: '', e_id: '', src: '' };
+
   },
   onLoad: function onLoad(options) {
     this.title = options.title;
     this.e_id = options.e_id;
+    this.src = options.url;
     this.$common.setNavTitle(this.title + '3D展示');
   } };exports.default = _default;
 
@@ -87,20 +89,21 @@ var icon = [{
         third: icon[2].def,
         fourth: icon[3].def },
 
-      currentIndex: 1 };
+      currentIndex: 1,
+      show3D: true,
+      url3D: '' };
 
   },
   methods: {
     navJump: function navJump(e) {
       var currentIndex = 1 * e.currentTarget.dataset.index;
-
       if (currentIndex < 4) {
         this.currentIndex = currentIndex;
         this.changeBarImg(currentIndex);
         this.$parent.changeBarIndex(currentIndex);
       } else {
         uni.navigateTo({
-          url: '../3Dview/3Dview?e_id=' + this.e_id + '&title=' + this.title });
+          url: '../3Dview/3Dview?e_id=' + this.e_id + '&title=' + this.title + '&url=' + this.url3D });
 
       }
     },
@@ -113,10 +116,22 @@ var icon = [{
         fourth: icon[3].def };
 
       this.iconSrc[indexArr[currentIndex - 1]] = icon[currentIndex - 1].sele;
+    },
+    getNav: function getNav(e_id) {var _this = this;
+      this.$api.getNav({
+        hall_id: e_id }).
+      then(function (res) {
+        if (res.status == 1006) {
+          _this.show3D = false;
+        } else if (res.status == 1000) {
+          _this.url3D = res.data.pano_url;
+        }
+      });
     } },
 
   created: function created() {
     this.changeBarImg(this.index);
+    this.getNav(this.e_id);
   },
   props: ['index', 'e_id', 'title'] };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))

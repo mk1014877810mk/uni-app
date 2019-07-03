@@ -84,8 +84,8 @@
 							console.log('result.name:', data.result.name)
 							if (data.statusCode == 0) {
 								uni.navigateTo({
-									url: '../detail/detail?z_id=88&title=扫码详情'
-									// url: '../detail/detail?z_id=' + data.result.name + '&title=扫码详情',
+									// url: '../detail/detail?z_id=88&title=扫码详情'
+									url: '../detail/detail?z_id=' + data.result.name + '&title=扫码详情',
 								});
 								this.scaning = false;
 								isSuccess = true;

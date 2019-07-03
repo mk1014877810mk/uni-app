@@ -33,37 +33,15 @@
 //
 //
 //
-//
-//
 
-// import myNav from '../components/nav'
 var isSuccess = false; // 上传图片是否成功
 var _default = {
   data: function data() {
     return {
-      e_id: '' };
+      showBtn: false };
 
-  },
-  onLoad: function onLoad(options) {
-    // this.e_id = options.e_id;
-    // this.title = options.title;
-    // this.$common.setNavTitle(this.title);
-    // this.getHallInfo();
   },
   methods: {
-    // getHallInfo() {
-    // 	this.$api.getHallInfo({
-    // 		e_id: this.e_id
-    // 	}).then(res => {
-    // 		if (res.status == 1000) {
-    // 			this.$common.setNavTitle(res.data.hall_name);
-    // 			this.logoSrc = this.$store.state.ajaxUrl + res.data.hall_logo;
-    // 		}
-    // 	}).catch(err => {
-    // 		console.log('展厅信息获取失败');
-    // 	})
-    // },
-
     goScanImg: function goScanImg() {var _this = this;
       uni.scanCode({
         success: function success(res) {
@@ -132,9 +110,9 @@ var _default = {
             if (data.statusCode == 0) {
               // this.$common.showTips('识别成功')
               uni.navigateTo({
-                url: '../detail/detail?z_id=88&title=扫码详情'
-                // url: '../detail/detail?z_id=' + data.result.name + '&title=扫码详情',
-              });
+                // url: '../detail/detail?z_id=88&title=扫码详情'
+                url: '../detail/detail?z_id=' + data.result.name + '&title=扫码详情' });
+
             } else if (data.statusCode == 3) {
               setTimeout(function () {
                 _this3.$common.showTips('识别失败，请拍识别物正面照片');
@@ -166,13 +144,25 @@ var _default = {
 
 
 
+    },
+
+    isShowARBtn: function isShowARBtn(e_id) {var _this4 = this;
+      this.$api.isShowARBtn({
+        e_id: e_id }).
+      then(function (res) {
+        if (res.status == 1000) {
+          _this4.showBtn = res.data.status == '1';
+        }
+      }).catch(function (err) {
+        console.log('是否展示ar按钮获取失败', err);
+      });
     } },
 
 
-  props: ['logoSrc', 'title'],
-  components: {
-    // myNav
-  } };exports.default = _default;
+  mounted: function mounted() {
+    this.isShowARBtn(this.e_id);
+  },
+  props: ['logoSrc', 'title', 'e_id'] };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
