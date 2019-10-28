@@ -80,7 +80,7 @@
 							data.forEach(el => {
 								el.hall_cover = this.$store.state.ajaxUrl + el.hall_cover;
 							})
-							this.swiper.imgUrls = data.length > 5 ? data.slice(0, 5) : data;
+							this.swiper.imgUrls = data.length > 5 ? data.slice(0, 5).reverse() : data.reverse();
 
 							// 设置模板数据
 							// 模板1
@@ -131,6 +131,9 @@
 		},
 		components: {
 			mySwiper
+		},
+		onShareAppMessage() {
+			
 		}
 	}
 </script>

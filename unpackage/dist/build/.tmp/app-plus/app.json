@@ -7,18 +7,19 @@
     "pages/scanAR/scanAR",
     "pages/3Dview/3Dview"
   ],
-  "subPackages": [],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
+  "nvueCompiler": "weex",
+  "renderer": "auto",
   "splashscreen": {
     "alwaysShowBeforeRender": true,
     "autoclose": false
   },
   "appname": "扬中博物馆",
-  "compilerVersion": "1.9.9",
+  "compilerVersion": "2.2.2",
   "usingComponents": {}
 }

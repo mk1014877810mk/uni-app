@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view class='template3' v-for='(item,i) in swiperItemList' :key='i'  @tap='goAnother(item.e_id,item.z_id)'>
+		<view class='template3' v-for='(item,i) in swiperItemList' :key='i' @tap='goAnother(item.e_id,item.z_id)'>
 			<view class='template3-top'>
 				<view class='template3-top-title one-txt-cut'>{{item.hall_name}}</view>
 				<image mode='aspectFill' :src='item.hall_cover'></image>
@@ -10,7 +10,7 @@
 			</view>
 		</view>
 		<block v-if="showTips">
-			<view class='tips'  v-if='swiperItemList.length>9||swiperItemList.length==0'>{{swiperText}}</view>
+			<view class='tips' v-if='swiperItemList.length>9||swiperItemList.length==0'>{{swiperText?swiperText:'没有更多了'}}</view>
 		</block>
 	</view>
 </template>
@@ -22,17 +22,22 @@
 				showTips: false
 			}
 		},
-		methods:{
-			goAnother(e_id, z_id){
-				this.template < 4 ? this.$emit('goDetail',{e_id, z_id}) : this.$emit('goList',{z_id});
+		methods: {
+			goAnother(e_id, z_id) {
+				this.template < 4 ? this.$emit('goDetail', {
+					e_id,
+					z_id
+				}) : this.$emit('goList', {
+					z_id
+				});
 			}
 		},
 		mounted() {
-			setTimeout(()=>{
+			setTimeout(() => {
 				this.showTips = true;
-			},1000);
+			}, 1000);
 		},
-		props: ['swiperItemList', 'swiperText','template']
+		props: ['swiperItemList', 'swiperText', 'template']
 	}
 </script>
 

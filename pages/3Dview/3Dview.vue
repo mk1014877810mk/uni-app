@@ -19,6 +19,9 @@
 			this.e_id = options.e_id;
 			this.src = options.url;
 			this.$common.setNavTitle(this.title + '3D展示');
+		},
+		onShareAppMessage() {
+			
 		}
 	}
 </script>

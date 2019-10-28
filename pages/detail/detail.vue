@@ -12,12 +12,15 @@
 			}
 		},
 		onLoad(options) {
-			this.$common.setNavTitle(options.title);
+			// this.$common.setNavTitle(options.title);
 			this.src = options.e_id ? 'https://renren.broadmesse.net/wechat-kanzhan/index.html?e_id=' + options.e_id :
 				'https://renren.broadmesse.net/wechat-kanzhan/index.html?i_id=' + options.z_id;
 		},
 		methods: {
 
+		},
+		onShareAppMessage() {
+			
 		}
 	}
 </script>

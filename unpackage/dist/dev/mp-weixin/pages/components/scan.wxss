@@ -6,18 +6,20 @@
 	padding: 100rpx;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
-	background-color: #ccc;
 }
 .box-content .box-top image.data-v-c3638062 {
 	display: block;
-	width: 550rpx;
-	height: 550rpx;
+	margin: 0 auto;
+	width: 400rpx;
+	height: 400rpx;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 	border: 20rpx solid #fff;
 }
 .box-content .box-tips.data-v-c3638062 {
-	padding: 4vh 0;
+	padding: 2vh;
+	padding-top: 0;
+	line-height: 80rpx;
 	font-size: 36rpx;
 }
 .box-content .box-btn.data-v-c3638062 {
@@ -25,7 +27,7 @@
 	padding: 15rpx 30rpx;
 	background-color: #09f;
 	border-radius: 20rpx;
-	margin: 2vh 20rpx 0;
+	margin: 3vh 20rpx 0;
 	color: #fff;
 }
 

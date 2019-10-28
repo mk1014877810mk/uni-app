@@ -86,11 +86,18 @@
 				})
 			}
 		},
-		created() {
+		mounted() {
+			this.currentIndex = this.index;
 			this.changeBarImg(this.index);
 			this.getNav(this.e_id);
 		},
-		props: ['index', 'e_id', 'title']
+		props: ['index', 'e_id', 'title'],
+		watch:{
+			index(newVal,oldVal){
+				this.currentIndex = newVal;
+				this.changeBarImg(newVal);
+			}
+		}
 	}
 </script>
 

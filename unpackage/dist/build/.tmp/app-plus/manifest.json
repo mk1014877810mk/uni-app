@@ -7,8 +7,8 @@
   "id": "__UNI__98BBECB",
   "name": "扬中博物馆",
   "version": {
-    "name": "1.0.0",
-    "code": "100"
+    "name": "1.0.1",
+    "code": 101
   },
   "description": "",
   "launch_path": "__uniappview.html",
@@ -51,6 +51,38 @@
       }
     },
     "distribute": {
+      "icons": {
+        "android": {
+          "hdpi": "D:/Kun Meng/桌面/扬中logo/扬中/72.png",
+          "xhdpi": "D:/Kun Meng/桌面/扬中logo/扬中/96.png",
+          "xxhdpi": "D:/Kun Meng/桌面/扬中logo/扬中/144.png",
+          "xxxhdpi": "D:/Kun Meng/桌面/扬中logo/扬中/192.png"
+        },
+        "ios": {
+          "appstore": "D:/Kun Meng/桌面/扬中logo/扬中/1024.png",
+          "iphone": {
+            "app@2x": "D:/Kun Meng/桌面/扬中logo/扬中/120.png",
+            "app@3x": "D:/Kun Meng/桌面/扬中logo/扬中/180.png",
+            "spotlight@2x": "D:/Kun Meng/桌面/扬中logo/扬中/80.png",
+            "spotlight@3x": "D:/Kun Meng/桌面/扬中logo/扬中/120.png",
+            "settings@2x": "D:/Kun Meng/桌面/扬中logo/扬中/58.png",
+            "settings@3x": "D:/Kun Meng/桌面/扬中logo/扬中/87.png",
+            "notification@2x": "D:/Kun Meng/桌面/扬中logo/扬中/40.png",
+            "notification@3x": "D:/Kun Meng/桌面/扬中logo/扬中/60.png"
+          },
+          "ipad": {
+            "app": "D:/Kun Meng/桌面/扬中logo/扬中/76.png",
+            "app@2x": "D:/Kun Meng/桌面/扬中logo/扬中/152.png",
+            "proapp@2x": "D:/Kun Meng/桌面/扬中logo/扬中/167.png",
+            "spotlight": "D:/Kun Meng/桌面/扬中logo/扬中/40.png",
+            "spotlight@2x": "D:/Kun Meng/桌面/扬中logo/扬中/80.png",
+            "settings": "D:/Kun Meng/桌面/扬中logo/扬中/29.png",
+            "settings@2x": "D:/Kun Meng/桌面/扬中logo/扬中/58.png",
+            "notification": "D:/Kun Meng/桌面/扬中logo/扬中/20.png",
+            "notification@2x": "D:/Kun Meng/桌面/扬中logo/扬中/40.png"
+          }
+        }
+      },
       "google": {
         "permissions": [
           "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
@@ -77,7 +109,11 @@
           "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
         ]
       },
-      "apple": {},
+      "apple": {
+        "plistcmds": [
+          "Set :NSCameraUsageDescription 进行二维码扫描"
+        ]
+      },
       "plugins": {
         "audio": {
           "mp3": {
@@ -88,8 +124,10 @@
     },
     "allowsInlineMediaPlayback": true,
     "uni-app": {
-      "compilerVersion": "1.9.9",
-      "control": "v8"
+      "compilerVersion": "2.2.2",
+      "control": "v8",
+      "nvueCompiler": "weex",
+      "renderer": "auto"
     }
   }
 }

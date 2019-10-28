@@ -1,21 +1,21 @@
 
-.template1.data-v-269ab90c {
+.template1.data-v-e25b22ac {
 	height: 138rpx;
 	border-bottom: 1rpx solid #ddd;
 	padding: 20rpx 0;
 	text-align: left;
 }
-.template1 .template1-left.data-v-269ab90c {
+.template1 .template1-left.data-v-e25b22ac {
 	display: inline-block;
 	width: 200rpx;
 	height: 130rpx;
 	vertical-align: middle;
 }
-.template1 .template1-left image.data-v-269ab90c {
+.template1 .template1-left image.data-v-e25b22ac {
 	width: 200rpx;
 	height: 130rpx;
 }
-.template1 .template1-right.data-v-269ab90c {
+.template1 .template1-right.data-v-e25b22ac {
 	display: inline-block;
 	vertical-align: middle;
 	width: 510rpx;
@@ -24,11 +24,11 @@
 	        box-sizing: border-box;
 	margin-left: 20rpx;
 }
-.template1 .template1-right .template1-right-title.data-v-269ab90c {
+.template1 .template1-right .template1-right-title.data-v-e25b22ac {
 	font-size: 32rpx;
 	margin: 10rpx 0;
 }
-.template1 .template1-right .template1-right-des.data-v-269ab90c {
+.template1 .template1-right .template1-right-des.data-v-e25b22ac {
 	font-size: 28rpx;
 	color: #666;
 	word-break: break-all;

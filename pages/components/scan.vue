@@ -4,7 +4,7 @@
 			<view class='box-top'>
 				<image mode='aspectFill' :src='logoSrc'></image>
 			</view>
-			<view class='box-tips one-txt-cut'>文化科技，尽在{{title}}</view>
+			<view class='box-tips'>{{des}}</view>
 			<!-- #ifdef H5 -->
 			<view class='box-btn' @tap='showH5Tips'>扫码导览</view>
 			<view v-if='showBtn' class='box-btn' @tap='showH5Tips'>AR导览</view>
@@ -28,7 +28,8 @@
 	export default {
 		data() {
 			return {
-				showBtn: false
+				showBtn: false,
+				des:''
 			}
 		},
 		methods: {
@@ -38,6 +39,9 @@
 						// console.log('二维码数据：', res)
 						this.code = res.result;
 						// 判断二维码的合法性及是否在当前展馆下扫描其他展馆中的展项
+						// var sence = 'https://renren.broadmesse.net/detail?e_id=8&i_id=274';  // detail
+						// var sence = 'https://renren.broadmesse.net/map?e_id=5&z_id=286';		// home
+						// var sence = 'https://renren.broadmesse.net/map?e_id=5&z_id=286&isMap=1';		// map
 						let oParams = {};
 						let aParams = [];
 						if (res.result && Array.isArray(res.result.split('?'))) {
@@ -53,9 +57,17 @@
 								});
 								return;
 							}
-							uni.navigateTo({
-								url: '../detail/detail?z_id=' + oParams.z_id + '&title=' + this.title
-							});
+							if ('z_id' in oParams) { // 跳转home或map
+								if(oParams.isMap){ // map
+									this.$parent.changeBarIndex(3);
+								}else{ // home
+									this.$parent.changeBarIndex(1);
+								}
+							} else { // 详情
+								uni.navigateTo({
+									url: '../detail/detail?z_id=' + oParams.i_id + '&title=' + this.title
+								});
+							}
 						} else {
 							uni.showModal({
 								title: '温馨提示',
@@ -67,7 +79,16 @@
 				});
 			},
 
-			showH5Tips() {
+			getDes(){
+				this.$api.getDes({e_id:this.e_id}).then(res=>{
+					console.log(res)
+					if(res.status==1000){
+						this.des = res.data.hall_summary;
+					}
+				})
+			},
+			
+			showH5Tips() { 
 				this.$common.showTips('当前环境下暂时无法使用此功能');
 			},
 
@@ -151,6 +172,7 @@
 		},
 		mounted() {
 			this.isShowARBtn(this.e_id)
+			this.getDes();
 		},
 		props: ['logoSrc', 'title', 'e_id'],
 	}
@@ -162,30 +184,32 @@
 	}
 
 	.box-content .box-top {
-		padding: 100rpx;
+		padding: 100upx;
 		box-sizing: border-box;
-		background-color: #ccc;
 	}
 
 	.box-content .box-top image {
 		display: block;
-		width: 550rpx;
-		height: 550rpx;
+		margin: 0 auto;
+		width: 400upx;
+		height: 400upx;
 		box-sizing: border-box;
 		border: 20rpx solid #fff;
 	}
 
 	.box-content .box-tips {
-		padding: 4vh 0;
+		padding: 2vh;
+		padding-top: 0;
+		line-height: 80upx;
 		font-size: 36rpx;
 	}
 
 	.box-content .box-btn {
 		display: inline-block;
-		padding: 15rpx 30rpx;
+		padding: 15upx 30upx;
 		background-color: #09f;
-		border-radius: 20rpx;
-		margin: 2vh 20upx 0;
+		border-radius: 20upx;
+		margin: 3vh 20upx 0;
 		color: #fff;
 	}
 </style>

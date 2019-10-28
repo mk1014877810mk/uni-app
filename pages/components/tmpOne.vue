@@ -10,7 +10,7 @@
 			</view>
 		</view>
 		<block v-if='showTips'>
-			<view class='tips' v-if='swiperItemList.length>9||swiperItemList.length==0'>{{swiperText}}</view>
+			<view class='tips' v-if='swiperItemList.length>9||swiperItemList.length==0'>{{swiperText?swiperText:'没有更多了'}}</view>
 		</block>
 	</view>
 </template>

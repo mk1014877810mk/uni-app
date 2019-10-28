@@ -16,5 +16,6 @@ export default {
 	getNav: data => request('pano/url', 'get', data),
 
 	// scan
+	getDes: data => request('applets/summary', 'get', data),
 	isShowARBtn: data => request('easyar/obtain-status', 'get', data)
 }

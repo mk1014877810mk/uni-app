@@ -66,7 +66,7 @@
 
 		<tab-scan v-if='navBar.index===2' :title='title' :logoSrc='logoSrc' :e_id='e_id'></tab-scan>
 		<tab-map v-if='navBar.index===3' :e_id='e_id'></tab-map>
-		
+
 		<my-nav :index='navBar.index' :e_id='e_id' :title='title'></my-nav>
 	</div>
 </template>
@@ -79,6 +79,7 @@
 	import myNav from '../components/nav'
 	import tabScan from '../components/scan'
 	import tabMap from '../components/map'
+	const defaultEid = 8;
 	export default {
 		data() {
 			return {
@@ -114,14 +115,15 @@
 			// #ifdef MP-WEIXIN
 			var sence = decodeURIComponent(options.q);
 			// var sence = 'https://renren.broadmesse.net/detail?e_id=8&i_id=274';  // detail
-			// var sence = 'https://renren.broadmesse.net/map?e_id=4&z_id=87';		// home
+			// var sence = 'https://renren.broadmesse.net/map?e_id=5&z_id=286';		// home
+			// var sence = 'https://renren.broadmesse.net/map?e_id=5&z_id=286&isMap=1';		// map
 			var exist = sence.indexOf('i_id');
 			var existHome = sence.indexOf('z_id');
 			var oParams = {};
 			var e_id, i_id, z_id;
 			console.log('options:', options, 'sence:', sence, 'exist:', exist, 'existHome:', existHome);
 
-			if (exist != -1) { // 扫码进入详情
+			if (exist != -1) { // 扫码进入详情	
 				var aParams = sence.split('?').slice(-1)[0].split('&');
 				aParams.forEach(function(el) {
 					oParams[el.split('=')[0]] = el.split('=')[1];
@@ -140,11 +142,15 @@
 					oParams[el.split('=')[0]] = el.split('=')[1];
 				});
 				e_id = oParams.e_id;
+				if (oParams.isMap) {
+					this.navBar.index = 3;
+					this.$store.commit('setLastHallZid', oParams.z_id);
+				}
 
 			} else { // 点击进入
 				e_id = options.e_id;
 			}
-			this.e_id = e_id || 8
+			this.e_id = e_id || defaultEid;
 			this.$common.showLoading();
 			uni.getSystemInfo({
 				success: res => {
@@ -157,7 +163,7 @@
 
 
 			// #ifndef MP-WEIXIN
-			this.e_id = options.e_id || 8;
+			this.e_id = options.e_id || defaultEid;
 			this.$common.showLoading();
 			uni.getSystemInfo({
 				success: res => {
@@ -273,7 +279,7 @@
 						res.data.forEach(el => {
 							const obj = {};
 							obj.img = this.$store.state.ajaxUrl + el.hall_cover;
-							obj.des = el.hall_summary;
+							obj.des = el.hall_summary;  
 							obj.z_id = el.z_id;
 							obj.title = el.hall_name;
 							obj.hall_cover = obj.img;
@@ -402,7 +408,7 @@
 
 			},
 
-			changeBarIndex(index){
+			changeBarIndex(index) {
 				this.navBar.index = index;
 			}
 		},
@@ -454,6 +460,9 @@
 			});
 
 		},
+		onShareAppMessage() {
+			
+		}
 	}
 </script>
 

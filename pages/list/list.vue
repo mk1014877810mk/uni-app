@@ -72,6 +72,9 @@
 			this.page++;
 			const i_id = this.list.slice(-1).z_id;
 			this.getInteractive(this.z_id, i_id, this.page);
+		},
+		onShareAppMessage() {
+			
 		}
 	}
 </script>
