@@ -1,7 +1,7 @@
 import store from '../store';
 import common from './common';
 
-const ajaxUrl = store.state.ajaxUrl;
+const ajaxUrl = store.state.sendUrl;
 
 const requestApi = (url, method, data, complete) => new Promise((resolve, reject) => {
 	const header = method == 'post'?'application/x-www-form-urlencoded':'application/json';

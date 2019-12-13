@@ -5,7 +5,8 @@
     "pages/detail/detail",
     "pages/list/list",
     "pages/scanAR/scanAR",
-    "pages/3Dview/3Dview"
+    "pages/3Dview/3Dview",
+    "pages/send/send"
   ],
   "subPackages": [],
   "window": {
@@ -15,5 +16,5 @@
     "backgroundColor": "#F8F8F8"
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap38.json"
+  "sitemapLocation": "sitemap1.json"
 }

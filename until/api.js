@@ -17,5 +17,6 @@ export default {
 
 	// scan
 	getDes: data => request('applets/summary', 'get', data),
-	isShowARBtn: data => request('easyar/obtain-status', 'get', data)
+	isShowARBtn: data => request('easyar/obtain-status', 'get', data),
+	
 }

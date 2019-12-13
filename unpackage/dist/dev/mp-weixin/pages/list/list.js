@@ -105,7 +105,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var tmpOne = function tmpOne() {return __webpack_require__.e(/*! import() | pages/components/tmpOne */ "pages/components/tmpOne").then(__webpack_require__.bind(null, /*! ../components/tmpOne */ 74));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var tmpOne = function tmpOne() {return __webpack_require__.e(/*! import() | pages/components/tmpOne */ "pages/components/tmpOne").then(__webpack_require__.bind(null, /*! ../components/tmpOne */ 82));};var _default =
 
 
 
